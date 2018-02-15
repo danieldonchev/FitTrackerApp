@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:background="?android:selectableItemBackground"
+    >
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/coreView"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="16dp"
+        android:layout_marginLeft="@dimen/recyclerview_padding_left"
+        android:layout_below="@id/titleView"/>
+
+</RelativeLayout>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/timeStartedTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="13dp"
+                android:text="Time Started"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/distanceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Distance"
+                android:textSize="20sp"
+                android:layout_below="@+id/timeStartedTextView"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:id="@+id/distanceEditText"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:ems="25"
+                android:textSize="20sp"
+                android:inputType="numberDecimal"
+                android:layout_alignBaseline="@+id/distanceTextView"
+                android:layout_alignBottom="@+id/distanceTextView"
+                android:layout_alignStart="@+id/hourEditText"
+                android:maxLength="10"/>
+
+            <TextView
+                android:id="@+id/durationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration"
+                android:textSize="20sp"
+                android:layout_marginTop="40dp"
+                android:layout_below="@+id/distanceTextView"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/hourTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="hr"
+                android:layout_alignBaseline="@+id/hourEditText"
+                android:layout_alignBottom="@+id/hourEditText"
+                android:layout_toEndOf="@+id/hourEditText" />
+
+            <TextView
+                android:id="@+id/minTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="min"
+                android:layout_alignBaseline="@+id/minEditText"
+                android:layout_alignBottom="@+id/minEditText"
+                android:layout_toStartOf="@+id/secEditText" />
+
+            <TextView
+                android:id="@+id/secTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="sec"
+                android:layout_alignBaseline="@+id/secEditText"
+                android:layout_alignBottom="@+id/secEditText"
+                android:layout_alignParentEnd="true" />
+
+            <EditText
+                android:id="@+id/hourEditText"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberSigned"
+                android:layout_alignBottom="@+id/durationTextView"
+                android:layout_centerHorizontal="true"
+                android:maxLength="2"/>
+
+            <EditText
+                android:id="@+id/minEditText"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberSigned"
+                android:layout_alignBaseline="@+id/hourTextView"
+                android:layout_alignBottom="@+id/hourTextView"
+                android:layout_toStartOf="@+id/minTextView"
+                android:maxLength="2"/>
+
+            <EditText
+                android:id="@+id/secEditText"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberSigned"
+                android:layout_alignBaseline="@+id/minTextView"
+                android:layout_alignBottom="@+id/minTextView"
+                android:layout_toStartOf="@+id/secTextView"
+                android:maxLength="2"/>
+
+            <TextView
+                android:id="@+id/distanceUnitTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/distanceTextView"
+                android:layout_toEndOf="@+id/distanceEditText" />
+
+            <TextView
+                android:id="@+id/stepsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Steps"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:id="@+id/stepsEditText"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="numberSigned"
+                android:maxLength="10"
+                android:layout_marginTop="64dp"
+                android:layout_below="@+id/hourTextView"
+                android:layout_alignStart="@+id/hourEditText" />
+
+            <EditText
+                android:id="@+id/calendarEditText"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="none"
+                android:textAlignment="center"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:layout_alignTop="@+id/timeStartedTextView"
+                android:layout_alignStart="@+id/distanceEditText" />
+
+            <EditText
+                android:id="@+id/timeEditText"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="none"
+                android:text="13:00"
+                android:textAlignment="center"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:layout_alignBaseline="@+id/calendarEditText"
+                android:layout_alignBottom="@+id/calendarEditText"
+                android:layout_alignParentEnd="true" />
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="51dp"
+                android:text="Save Activity"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/stepsEditText"
+                android:layout_centerHorizontal="true" />
+
+            <Spinner
+                android:id="@+id/activitySpinner"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"/>
+
+
+        </RelativeLayout>
+
+
+</ScrollView>

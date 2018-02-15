@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    tools:context="com.daniel.FitTrackerApp.fragments.SaveActivityFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:id="@+id/mapPreview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            tools:ignore="MissingPrefix"
+            map:liteMode="true"
+            />
+
+        <include layout="@layout/activity_maintext_linearlayout"/>
+
+    </LinearLayout>
+
+</ScrollView>

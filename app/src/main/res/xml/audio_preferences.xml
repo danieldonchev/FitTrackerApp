@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <SwitchPreferenceCompat
+                android:key ="@string/audio_settings_key"
+                android:title="@string/audioSettings"
+                android:defaultValue="false"
+            />
+
+    <com.daniel.FitTrackerApp.preferences.EditTextPreferenceWithSummary
+        android:key="@string/audio_repeat_time_key"
+        android:title="@string/repeatTime"
+        android:defaultValue="@integer/defaultAudioRepeatTime"
+        android:inputType="number"
+        android:dependency="@string/audio_settings_key"/>
+
+        <CheckBoxPreference
+            android:key="@string/audio_distance_key"
+            android:title="@string/distance"
+            android:dependency="@string/audio_settings_key"/>
+
+    <CheckBoxPreference
+        android:key="@string/audio_duration_key"
+        android:title="@string/duration"
+        android:dependency="@string/audio_settings_key"/>
+
+    <CheckBoxPreference
+        android:key="@string/audio_avg_pace_key"
+        android:title="@string/avgPace"
+        android:dependency="@string/audio_settings_key"/>
+
+    <CheckBoxPreference
+        android:key="@string/audio_speed_key"
+        android:title="@string/speed"
+        android:dependency="@string/audio_settings_key"/>
+
+    <CheckBoxPreference
+        android:key="@string/audio_avg_speed_key"
+        android:title="@string/avgSpeed"
+        android:dependency="@string/audio_settings_key"/>
+
+    <CheckBoxPreference
+        android:key="@string/audio_steps_key"
+        android:title="@string/steps"
+        android:dependency="@string/audio_settings_key"/>
+
+    <CheckBoxPreference
+        android:key="@string/audio_calories_key"
+        android:title="@string/calories"
+        android:dependency="@string/audio_settings_key"/>
+
+</PreferenceScreen>

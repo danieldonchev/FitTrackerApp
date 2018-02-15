@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/loginLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/loginEmailText"
+            android:layout_marginTop="41dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="37dp"
+            android:hint="Email"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_marginTop="33dp"
+            android:id="@+id/passwordText"
+            android:layout_below="@+id/loginEmailText"
+            android:layout_alignStart="@+id/loginEmailText"
+            android:hint="Password"/>
+
+        <Button
+            android:text="Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/enterPasswordCode"
+            android:layout_alignStart="@+id/enterPasswordCode"
+            android:layout_marginTop="20dp"
+            android:id="@+id/loginDialogButton" />
+
+        <TextView
+            android:id="@+id/forgottenPassText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/passwordText"
+            android:layout_below="@+id/passwordText"
+            android:layout_marginTop="20dp"
+            android:text="Forgot your password?" />
+
+        <TextView
+            android:id="@+id/enterPasswordCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/forgottenPassText"
+            android:layout_below="@+id/forgottenPassText"
+            android:layout_marginTop="15dp"
+            android:text="Enter password code." />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/forgottenPasswordLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:layout_alignStart="@+id/emailText"
+            android:text="Enter your email to receiver a code for password change."
+            />
+
+        <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@id/emailText"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/headerText"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="37dp"
+        android:hint="Email"/>
+
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEND"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/emailText"
+            android:layout_alignStart="@+id/emailText" />
+
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/sendButton"
+            android:layout_below="@id/sendButton"
+            android:layout_marginTop="15dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/confirmLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/infoText"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/codeEditText"
+            android:text="Enter the code you received on your email to enter your new password."/>
+
+        <EditText
+            android:id="@+id/codeEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:maxLength="8"
+            android:layout_marginTop="19dp"
+            android:hint="Code"
+            android:layout_below="@+id/infoText"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/confirmEmailText"
+            android:layout_marginTop="41dp"
+            android:layout_alignStart="@+id/codeEditText"
+            android:layout_below="@+id/codeEditText"
+            android:hint="Email"/>
+
+        <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_marginTop="33dp"
+        android:id="@+id/codePasswordText"
+        android:layout_below="@id/confirmEmailText"
+        android:layout_alignStart="@id/confirmEmailText"
+        android:hint="Password"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:layout_marginTop="35dp"
+            android:id="@+id/codeRepeatPassword"
+            android:hint="Repeat Password"
+            android:layout_below="@+id/codePasswordText"
+            android:layout_alignStart="@+id/codePasswordText" />
+
+        <Button
+        android:text="Confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+        android:id="@+id/confirmCodeButton"
+            android:layout_below="@+id/codeRepeatPassword"
+            android:layout_alignStart="@+id/codeRepeatPassword" />
+
+        <TextView
+            android:id="@+id/codeErrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/confirmCodeButton"
+            android:layout_alignStart="@id/confirmCodeButton"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

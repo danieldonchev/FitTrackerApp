@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        android:key="@string/height_key"
+        android:title="@string/height"
+        />
+
+    <Preference
+        android:key="@string/weight_key"
+        android:title="@string/weight"
+        />
+
+    <Preference
+        android:key="@string/birthday_key"
+        android:title="@string/birthday"
+        />
+
+    <com.daniel.FitTrackerApp.preferences.TwoButtonPreference
+        android:key="@string/gender_key"
+        custom:buttonValueLeft="@string/gender_male_value"
+        custom:buttonValueRight="@string/gender_female_value"
+        custom:buttonTextRight="@string/gender_female"
+        custom:buttonTextLeft="@string/gender_male" />
+</PreferenceScreen>

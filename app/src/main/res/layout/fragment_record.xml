@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows = "true"
+    tools:context="com.daniel.FitTrackerApp.fragments.RecordFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/content_frame"
+        android:layout_above="@+id/bottom_fragment"
+        android:layout_alignParentTop="true" >
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        />
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recordTopView"
+        android:orientation="vertical"
+        android:layout_width="@dimen/topview_width"
+        android:layout_height="@dimen/topview_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="@dimen/activity_text_width"
+            android:layout_height="@dimen/activity_text_height"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activityText"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:includeFontPadding="false"
+                android:text="Running"
+                android:textSize="30dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:background="#276CA8"
+                />
+        </LinearLayout>
+
+
+        <Chronometer
+            android:layout_width="@dimen/chronometer_width"
+            android:layout_height="@dimen/chronometer_height"
+            android:id="@+id/chronometer"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textSize="40dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/chronometer_shape"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+<Button
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:id="@+id/mylocationButton"
+    android:background="@drawable/mylocation"
+    android:layout_alignBottom="@+id/content_frame"
+    android:layout_alignParentStart="true"
+    android:layout_marginBottom="25dp"
+    android:layout_marginStart="7dp"/>
+
+<ImageButton
+    android:layout_width="93dp"
+    android:layout_height="60dp"
+    android:background="@drawable/roundbuttonshape"
+    android:id="@+id/clearEverything"
+    android:src="@android:drawable/ic_media_play"
+    android:contentDescription="@string/description"
+    android:layout_below="@+id/Stop"
+    android:layout_alignStart="@+id/Stop"
+    />
+
+    <Button
+    android:id="@+id/enable_gps"
+
+    android:text="ENABLE GPS"
+    android:textColor="#FFFFFF"
+    android:textSize="25sp"
+
+    android:layout_width="175dp"
+    android:layout_height="60dp"
+    android:background="@drawable/enablegpsbutton"
+    android:shadowColor="#928EBF"
+    android:shadowDx="0"
+    android:shadowDy="0"
+    android:shadowRadius="5"
+        android:layout_alignBottom="@+id/gps_widget"
+        android:layout_toStartOf="@+id/splitsButton" />
+
+
+    <ImageButton
+        android:layout_width="93dp"
+        android:layout_height="60dp"
+        android:id="@+id/Stop"
+        android:background="@drawable/roundbuttonshape"
+        android:src="@android:drawable/ic_media_play"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
+        android:id="@+id/Record"
+        android:layout_alignBottom="@+id/mylocationButton"
+        android:layout_toEndOf="@+id/activityButton" />
+
+    <Button
+        android:text="Running"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
+        android:id="@+id/activityButton"
+        android:layout_alignBottom="@+id/mylocationButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Splits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/splitsButton"
+        android:layout_alignTop="@+id/mylocationButton"
+        android:layout_alignStart="@+id/clearEverything" />
+
+    <include layout="@layout/gps_widget"
+        android:id="@+id/gpsWidget"
+        android:layout_width="53dp"
+        android:layout_height="48dp"
+        android:layout_above="@+id/mylocationButton"
+         />
+
+</RelativeLayout>

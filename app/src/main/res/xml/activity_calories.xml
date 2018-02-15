@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Activities>
+    <Activity>
+        <title>Cycling</title>
+        <values speed="5.5" met="3.5"></values>
+        <values speed="9.4" met="5.8"></values>
+        <values speed="11" met="6.8"></values>
+        <values speed="13" met="8"></values>
+        <values speed="15" met="10"></values>
+        <values speed="17.5" met="12"></values>
+        <values speed="20" met="15.8"></values>
+    </Activity>
+    <Activity>
+        <title>Running</title>
+            <values speed="2" met="2"></values>
+            <values speed="2.5" met="3"></values>
+            <values speed="3" met="3.5"></values>
+            <values speed="3.5" met="4.3"></values>
+            <values speed="4" met="6"></values>
+            <values speed="4.5" met="7"></values>
+            <values speed="5" met="8.3"></values>
+            <values speed="5.5" met="9"></values>
+            <values speed="6" met="9.8"></values>
+            <values speed="6.5" met="10.5"></values>
+            <values speed="7" met="11"></values>
+            <values speed="7.5" met="11.8"></values>
+            <values speed="8" met="11.8"></values>
+            <values speed="8.5" met="12.3"></values>
+            <values speed="9" met="12.8"></values>
+            <values speed="9.5" met="13.5"></values>
+            <values speed="10" met="14.5"></values>
+            <values speed="10.5" met="15.3"></values>
+            <values speed="11" met="16"></values>
+            <values speed="11.5" met="17"></values>
+            <values speed="12" met="19"></values>
+            <values speed="12.5" met="19.3"></values>
+            <values speed="13" met="19.8"></values>
+            <values speed="13.5" met="20"></values>
+            <values speed="14" met="23"></values>
+    </Activity>
+    <Activity>
+        <title>Walking</title>
+        <values speed="2.5" met="3"></values>
+        <values speed="3.2" met="3.5"></values>
+        <values speed="3.5" met="4.3"></values>
+        <values speed="3.5" met="4.3"></values>
+    </Activity>
+</Activities>

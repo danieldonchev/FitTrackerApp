@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/start"
+            android:title="Start" />
+        <item
+            android:id="@+id/history"
+            android:title="History" />
+
+        <item
+            android:id="@+id/goals"
+            android:title="Goals"/>
+
+        <item
+            android:id="@+id/weightLog"
+            android:title="Weight Log"/>
+
+        <!--<item-->
+            <!--android:id="@+id/peopleActivites"-->
+            <!--android:title="People Activites"/>-->
+
+
+        <item
+            android:id="@+id/dailyStats"
+            android:title="Daily Stats"/>
+
+        <item
+            android:id="@+id/settings"
+            android:title="Settings"/>
+
+        <!--<item-->
+            <!--android:id="@+id/testFragment"-->
+            <!--android:title="Test Fragment"-->
+            <!--/>-->
+    </group>
+
+</menu>

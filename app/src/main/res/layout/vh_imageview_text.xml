@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:clickable="true"
+    android:background="?android:selectableItemBackground"
+    >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/caloriesTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/imageView1"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:text="text here"
+        android:textSize="20sp"/>
+
+</RelativeLayout>

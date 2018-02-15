@@ -1,0 +1,188 @@
+<resources>
+    <string name="app_name">Traker</string>
+    <string name="title_activity_gmaps">Map</string>
+    <string name="account_label">Traker </string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="description">Img desc here</string>
+
+    <!--km text-->
+    <string name="centimeters">cm</string>
+    <string name="kilometers"> km </string>
+    <string name="paceKM"> min/km </string>
+    <string name="speedKM"> km/hr</string>
+    <!--miles text-->
+    <string name="miles"> miles </string>
+    <string name="paceMI">min/mile</string>
+    <string name="speedMI">mi/hr</string>
+
+    <string name="facebook_app_id">262565670811889</string>
+
+
+    <!--Authentication/Register dialog boxes-->
+    <item name="emailText" type="id"/>
+    <item name="passwordText" type="id"/>
+    <!--Authentication/Register dialog boxes-->
+
+
+        <item name="emailErrorButtonEnable" type="id" />
+        <item name="emailErrorButtonDisable" type="id" />
+        <!--Testing-->
+
+
+        <!--Testing-->
+    <!--Settings items-->
+    <!--Audio Settings-->
+    <string name="audioSettings">Audio</string>
+    <string name="repeatTime">Repeat Time Seconds</string>
+    <string name="distance">Distance</string>
+    <string name="duration">Duration</string>
+    <string name="avgPace">Average Pace</string>
+    <string name="speed">Speed</string>
+    <string name="avgSpeed">Average Speed</string>
+    <string name="steps">Steps</string>
+    <string name="calories">Calories</string>
+
+    <!--Keys-->
+    <string name="audio_repeat_time_key">audio_repeat_time</string>
+    <string name="audio_settings_key">audio_on</string>
+    <string name="audio_distance_key">audio_distance</string>
+    <string name="audio_duration_key">audio_duration</string>
+    <string name="audio_avg_pace_key">audio_avg_pace</string>
+    <string name="audio_speed_key">audio_speed</string>
+    <string name="audio_avg_speed_key">audio_avg_speed</string>
+    <string name="audio_steps_key">audio_steps</string>
+    <string name="audio_calories_key">audio_calories</string>
+    <string name="gender_key">gender</string>
+    <string name="audio_preferences_key">audio_preferences</string>
+    <string name="unit_key">unit</string>
+    <string name="height_key">height</string>
+    <string name="birthday_key">birthday</string>
+    <string name="weight_key">weight</string>
+    <string name="split_key">split</string>
+    <string name="is_signed_in_key">is_signed_in</string>
+    <string name="access_token_key">access_token</string>
+    <string name="refresh_token_key">refresh_token</string>
+    <string name="access_token_expire_date_key">access_token_expire_date</string>
+    <string name="first_run_key">first_run</string>
+    <string name="is_recording_key">is_recording</string>
+    <string name="signed_in_type_key">signed_in_type</string>
+    <string name="email_key">email</string>
+    <string name="name_key">name</string>
+    <string name="id_key">id</string>
+    <string name="distance_split_key">distance_split</string>
+    <string name="record_box1_key">record_box1</string>
+    <string name="record_box2_key">record_box2</string>
+    <string name="record_box3_key">record_box3</string>
+    <string name="record_box4_key">record_box4</string>
+    <string name="split_unit_key">split_unit</string>
+    <string name="has_first_steps">has_first_steps</string>
+
+    <integer name="defaultAudioRepeatTime">60</integer>
+    <string name="audioPreference">Audio Settings</string>
+
+    <!--Gender-->
+    <string name="genderMessage">Choose Gender</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_male_value">m</string>
+    <string name="gender_female_value">f</string>
+
+    <string-array name="genderValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <integer name="defaultGender">1</integer>
+
+    <!--Measuring units-->
+    <string name="unitMessage">Choose unit</string>
+
+    <string name="metric_value">m</string>
+    <string name="imperial_value">i</string>
+
+    <string name="metric">Metric</string>
+    <string name="imperial">Imperial</string>
+
+    <string name="meters">meters</string>
+    <string name="km">km</string>
+    <string name="ft">ft</string>
+    <string name="yards">yards</string>
+
+    <string name="kilograms">kg</string>
+    <string name="lbs">lbs</string>
+
+    <string-array name="metric_units">
+        <item>@string/meters</item>
+        <item>@string/km</item>
+    </string-array>
+
+    <string-array name="imperial_units">
+        <item>@string/ft</item>
+        <item>@string/yards</item>
+        <item>@string/miles</item>
+    </string-array>
+
+    <!--Error send-->
+    <string-array name="errorSender">
+        <item>Enable email error</item>
+        <item>Disable email error</item>
+    </string-array>
+
+    <string name="birthday">Birthday</string>
+
+
+    <!--Height settings-->
+    <string name="height">Height</string>
+
+    <!--Weight settings-->
+    <string name="weight">Weight</string>
+    <string name="defaultWeight">65.0</string>
+
+    <string name="splitMeters">Split</string>
+    <string name="defaultSplit">1.0</string>
+
+
+    <string name="profile_settings">Profile Settings</string>
+    <string name="general_settings">General Settings</string>
+
+    <!--Defaults-->
+    <integer name="default_height">170</integer>
+    <integer name="default_weight">65</integer>
+    <string name="default_metric_unit">@string/km</string>
+    <integer name="default_metric_split">1</integer>
+    <string name="default_imperial_unit">@string/miles</string>
+    <bool name="default_gender">true</bool>
+    <integer name="default_imperial_split">1</integer>
+    <bool name="default_is_recording">false</bool>
+    <string-array name="default_record_boxes">
+        <item>Distance</item>
+        <item>Avg.Pace</item>
+        <item>Avg.Speed</item>
+        <item>Speed</item>
+    </string-array>
+
+    <string-array name="goal_spinner_items">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Custom</item>
+    </string-array>
+
+    <item name="spinnerGoal1" type="id"/>
+    <item name="spinnerGoal2" type="id"/>
+    <item name="spinnerGoal3" type="id"/>
+    <item name="spinnerGoal4" type="id"/>
+
+    <item name="imageAddButton1" type="id"/>
+    <item name="imageAddButton2" type="id"/>
+    <item name="imageAddButton3" type="id"/>
+    <item name="imageAddButton4" type="id"/>
+
+    <string-array name="profile_photo_items">
+        <item> </item>
+        <item>Take a photo</item>
+        <item>Choose a photo</item>
+    </string-array>
+</resources>

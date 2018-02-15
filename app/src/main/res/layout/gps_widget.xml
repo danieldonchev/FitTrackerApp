@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gps_widget"
+    android:orientation="vertical"
+    android:layout_width="53dp"
+    android:layout_height="51dp"
+    android:background="@drawable/background_border">
+
+    <ImageView
+        android:id="@+id/first_tower"
+        android:layout_width="7dp"
+        android:layout_height="12dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/light_grey"/>
+
+    <ImageView
+        android:id="@+id/second_tower"
+        android:layout_width="7dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/first_tower"
+        android:background="@color/light_grey"/>
+
+    <ImageView
+        android:id="@+id/third_tower"
+        android:layout_width="7dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/second_tower"
+        android:background="@color/light_grey" />
+
+    <ImageView
+        android:id="@+id/fourth_tower"
+        android:layout_width="7dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/third_tower"
+        android:background="@color/light_grey"/>
+
+    <ImageView
+        android:id="@+id/fifth_tower"
+        android:layout_width="7dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="2dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/fourth_tower"
+        android:background="@color/light_grey"/>
+
+    <TextView
+        android:id="@+id/gpsAccuracyView"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:textSize="12sp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:layout_above="@+id/third_tower"
+        android:layout_alignEnd="@+id/second_tower" />
+
+</RelativeLayout>

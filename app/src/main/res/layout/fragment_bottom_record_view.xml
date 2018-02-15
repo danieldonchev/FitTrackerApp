@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/topLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <include layout="@layout/record_box" android:id="@+id/layoutBox1" />
+
+        <include layout="@layout/record_box" android:id="@+id/layoutBox2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/topLinearLayout">
+
+        <include layout="@layout/record_box" android:id="@+id/layoutBox3" />
+        <include layout="@layout/record_box" android:id="@+id/layoutBox4" />
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

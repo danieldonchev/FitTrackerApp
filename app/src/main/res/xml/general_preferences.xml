@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    >
+
+    <Preference
+        android:key="@string/profile_settings"
+        android:title="@string/profile_settings"
+        />
+
+    <Preference
+        android:key="@string/audio_preferences_key"
+        android:title="@string/audioPreference"
+        />
+
+    <PreferenceCategory
+        android:title="@string/general_settings"/>
+
+    <com.daniel.FitTrackerApp.preferences.TwoButtonPreference
+        android:key="@string/unit_key"
+        custom:buttonValueLeft="@string/metric_value"
+        custom:buttonValueRight="@string/imperial_value"
+        custom:buttonTextLeft="@string/metric"
+        custom:buttonTextRight="@string/imperial"
+        />
+
+    <Preference
+        android:key="@string/split_key"
+        android:title="@string/splitMeters"
+    />
+</PreferenceScreen>

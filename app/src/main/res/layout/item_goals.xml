@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/headerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="13dp" />
+
+    <TextView
+        android:id="@+id/distanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/headerText"
+        android:layout_below="@+id/headerText"
+        android:layout_marginTop="22dp"
+        android:text="Distance" />
+
+    <TextView
+        android:id="@+id/distanceTextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/distanceTextView"
+        android:layout_alignBottom="@+id/distanceTextView"
+        android:layout_marginStart="125dp"
+         />
+
+    <TextView
+        android:id="@+id/durationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/distanceTextView"
+        android:layout_below="@+id/distanceTextView"
+        android:layout_marginTop="11dp"
+        android:text="Duration" />
+
+    <TextView
+        android:id="@+id/durationTextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/durationTextView"
+        android:layout_alignBottom="@+id/durationTextView"
+        android:layout_marginStart="125dp"/>
+
+    <TextView
+        android:id="@+id/caloriesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/headerText"
+        android:layout_below="@+id/durationTextView"
+        android:layout_marginTop="12dp"
+        android:text="Calories" />
+
+    <TextView
+        android:id="@+id/caloriesTextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/caloriesTextView"
+        android:layout_alignBottom="@+id/caloriesTextView"
+        android:layout_marginStart="125dp" />
+
+    <TextView
+        android:id="@+id/stepsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/headerText"
+        android:layout_below="@+id/caloriesTextView"
+        android:layout_marginTop="13dp"
+        android:text="Steps" />
+
+    <TextView
+        android:id="@+id/stepsTextValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/stepsTextView"
+        android:layout_marginStart="125dp"/>
+
+    <TextView
+        android:id="@+id/distanceUnitTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/distanceTextValue"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/distanceTextValue" />
+
+    <ImageButton
+        android:id="@+id/edit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="24dp"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <ImageButton
+        android:id="@+id/delete_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/edit_button"
+        android:layout_below="@+id/edit_button"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    <TextView
+        android:id="@+id/dummyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/stepsTextView" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/stepsTextView"
+        android:layout_toEndOf="@+id/dummyView"
+        android:layout_toLeftOf="@+id/delete_button" />
+
+    <TextView
+        android:id="@+id/progress_bar_percent_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progressBar"
+        android:layout_marginStart="120dp"
+        android:textSize="14sp" />
+
+</RelativeLayout>

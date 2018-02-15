@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Your account details are not set. Please take some time to set them."
+        android:textSize="20sp"
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="7dp"
+        android:id="@+id/headerText"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/headerText"
+        android:id="@+id/heighRL"
+        android:layout_marginTop="35dp"
+        >
+
+        <include layout="@layout/vh_two_text_views_item"
+            android:id="@+id/heightLayout"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/weightRL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/heighRL"
+        android:layout_marginTop="15dp"
+        >
+
+        <include layout="@layout/vh_two_text_views_item"
+            android:id="@+id/weightLayout" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weightRL"
+        android:id="@+id/birthdayRL"
+        android:layout_marginTop="15dp"
+        >
+
+        <include layout="@layout/vh_two_text_views_item"
+            android:id="@+id/birthdayLayout"
+            />
+    </RelativeLayout>
+
+    <Button
+        android:text="Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/birthdayRL"
+        android:layout_alignEnd="@+id/headerText"
+        android:layout_marginTop="35dp"
+        android:id="@+id/doneButton" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/heighRL"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1044874343985",
+    "project_id": "onyx-osprey-135023"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044874343985:android:a87068f9758ef1a4",
+        "android_client_info": {
+          "package_name": "com.example.daniel.gmapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1044874343985-4a154luls9lqki0hvdrb9v0gbqut7b32.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.daniel.gmapp",
+            "certificate_hash": "1C6DE32C560EDBC5C2EFC1128B096762C7320C59"
+          }
+        },
+        {
+          "client_id": "1044874343985-7kp5bf1n586bmo9l0vahi59otbga37jk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWpzqqIQvG5FksrPZsOgd0EhgsI10mQLI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

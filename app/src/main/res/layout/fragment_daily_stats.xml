@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="100dp"
+        android:text="Distance:"
+        android:layout_below="@+id/textView13"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="14dp"
+        android:text="Today"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Calories:"
+        android:layout_below="@+id/textView4"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView6"
+        android:layout_below="@+id/textView6"
+        android:layout_marginTop="14dp"
+        android:text="Distance:" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView8"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="12dp"
+        android:text="Duration:" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Steps:"
+        android:layout_below="@+id/textView10"
+        android:layout_alignEnd="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/dailyCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6"
+        android:layout_marginStart="41dp" />
+
+    <TextView
+        android:id="@+id/dailyDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_alignStart="@+id/dailyCalories" />
+
+    <TextView
+        android:id="@+id/dailyDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView10"
+        android:layout_alignBottom="@+id/textView10"
+        android:layout_alignStart="@+id/dailyDistance" />
+
+    <TextView
+        android:id="@+id/dailySteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/dailyDuration"
+        android:layout_alignTop="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Activity"
+        android:layout_below="@+id/dailySteps"
+        android:layout_alignStart="@+id/dailySteps"
+        android:layout_marginTop="44dp" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Duration:"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:text="Steps:"
+        android:layout_below="@+id/textView21"
+        android:layout_alignStart="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/currentActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_alignTop="@+id/textView20"
+        android:layout_alignStart="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/currentDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView21"
+        android:layout_alignStart="@+id/textView20" />
+
+    <TextView
+        android:id="@+id/currentDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView21"
+        android:layout_alignBottom="@+id/textView21"
+        android:layout_alignStart="@+id/currentDistance" />
+
+    <TextView
+        android:id="@+id/currentSteps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView23"
+        android:layout_alignBottom="@+id/textView23"
+        android:layout_below="@+id/currentDuration"
+        android:layout_alignStart="@+id/currentDistance"/>
+
+    <TextView
+        android:id="@+id/unitView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dailyDistance"
+        android:layout_alignBottom="@+id/dailyDistance"
+        android:layout_alignStart="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/unitTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/currentDistance"
+        android:layout_alignBottom="@+id/currentDistance"
+        android:layout_marginEnd="15dp"
+        android:layout_toStartOf="@+id/currentActivity" />
+</RelativeLayout>

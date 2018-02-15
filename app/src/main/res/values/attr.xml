@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TwoButtonPreference">
+        <attr name="buttonValueLeft" format="string"/>
+        <attr name="buttonValueRight" format="string"/>
+        <attr name="buttonTextLeft" format="string"/>
+        <attr name="buttonTextRight" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="SplitDialogPreference">
+        <attr name="spinner_entries" format="reference"/>
+    </declare-styleable>
+</resources>

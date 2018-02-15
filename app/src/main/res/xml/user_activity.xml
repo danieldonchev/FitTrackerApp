@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<User>
+    <Today>
+        <Distance>0</Distance>
+        <Duration>0</Duration>
+        <Calories>0</Calories>
+        <Steps>0</Steps>
+    </Today>
+    <Week>
+        <Distance>0</Distance>
+        <Duration>0</Duration>
+        <Calories>0</Calories>
+        <Steps>0</Steps>
+    </Week>
+    <Month>
+        <Distance>0</Distance>
+        <Duration>0</Duration>
+        <Calories>0</Calories>
+        <Steps>0</Steps>
+    </Month>
+</User>

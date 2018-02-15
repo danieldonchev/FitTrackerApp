@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/goal_view_id"
+    >
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:entries="@array/goal_spinner_items"
+        android:id="@+id/spinner2"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/type_text"
+        android:layout_marginStart="96dp" />
+
+    <TextView
+        android:id="@+id/type_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_alignBottom="@+id/spinner2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="23dp"
+        android:text="Type" />
+
+    <EditText
+        android:id="@+id/dateStartEditText"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="none"
+        android:textAlignment="center"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:visibility="gone"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_below="@+id/spinner2"
+        android:layout_toEndOf="@+id/type_text"
+        android:layout_marginStart="23dp" />
+
+    <EditText
+        android:id="@+id/dateEndEditText"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="none"
+        android:textAlignment="center"
+        android:clickable="false"
+        android:visibility="gone"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_marginStart="18dp"
+        android:layout_below="@+id/spinner2"
+        android:layout_toEndOf="@+id/dateStartEditText" />
+
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:layout_below="@+id/spinner2"
+        android:layout_alignStart="@+id/rl2">
+
+        <TextView
+            android:id="@+id/distanceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Distance"
+            android:enabled="false"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/distanceEditText"
+            android:ems="4"
+            android:inputType="numberDecimal"
+            android:layout_alignParentTop="true"
+            android:imeOptions="actionDone"
+            android:layout_toRightOf="@+id/distanceTextView"
+            android:layout_marginStart="50dp"
+            android:enabled="false"
+            android:maxLength="10"/>
+
+        <TextView
+            android:id="@+id/distanceUnitTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/distanceTextView"
+            android:layout_toEndOf="@+id/distanceEditText"
+            android:enabled="false"
+            />
+
+        <ImageButton
+            android:id="@id/imageAddButton1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@android:drawable/ic_menu_add"
+            android:clickable="true"
+            android:layout_marginEnd="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl1"
+        android:layout_alignStart="@+id/type_text" >
+
+        <TextView
+            android:id="@+id/durationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:text="Duration"
+            android:enabled="false"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/hoursEditText"
+            android:ems="2"
+            android:imeOptions="actionDone"
+            android:inputType="numberSigned"
+            android:layout_marginStart="51dp"
+            android:enabled="false"
+            android:layout_alignBaseline="@+id/durationTextView"
+            android:layout_alignBottom="@+id/durationTextView"
+            android:layout_toEndOf="@+id/durationTextView"
+            android:maxLength="2"/>
+
+        <TextView
+            android:id="@+id/hrTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hr"
+            android:layout_alignBottom="@+id/imageAddButton2"
+            android:layout_toEndOf="@+id/hoursEditText"
+            android:enabled="false"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/minEditText"
+            android:ems="2"
+            android:imeOptions="actionDone"
+            android:inputType="numberSigned"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/hrTextView"
+            android:enabled="false"
+            android:maxLength="2"
+            />
+
+        <TextView
+            android:id="@+id/minTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="min"
+            android:layout_alignBottom="@+id/imageAddButton2"
+            android:layout_toEndOf="@+id/minEditText"
+            android:enabled="false"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/secEditText"
+            android:ems="2"
+            android:imeOptions="actionDone"
+            android:inputType="numberSigned"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/minTextView"
+            android:enabled="false"
+            android:maxLength="2"
+            />
+
+        <TextView
+            android:id="@+id/secTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sec"
+            android:layout_alignBottom="@+id/imageAddButton2"
+            android:layout_toEndOf="@+id/secEditText"
+            android:enabled="false"
+            />
+
+        <ImageButton
+            android:id="@id/imageAddButton2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@android:drawable/ic_menu_add"
+            android:clickable="true"
+            android:layout_marginEnd="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl2"
+        android:layout_alignStart="@+id/type_text" >
+
+        <TextView
+            android:id="@+id/caloriesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calories"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:enabled="false"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/caloriesEditText"
+            android:ems="4"
+            android:imeOptions="actionDone"
+            android:inputType="numberSigned"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/caloriesTextView"
+            android:layout_marginStart="50dp"
+            android:enabled="false"
+            android:maxLength="10"/>
+
+        <ImageButton
+            android:id="@id/imageAddButton3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@android:drawable/ic_menu_add"
+            android:clickable="true"
+            android:layout_marginEnd="21dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl3"
+        android:layout_alignStart="@+id/type_text" >
+
+        <TextView
+            android:id="@+id/stepsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Steps"
+            android:layout_alignBaseline="@+id/stepsEditText"
+            android:layout_alignBottom="@+id/stepsEditText"
+            android:layout_alignParentStart="true"
+            android:enabled="false"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/stepsEditText"
+            android:ems="4"
+            android:imeOptions="actionDone"
+            android:inputType="numberSigned"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/stepsTextView"
+            android:layout_marginStart="65dp"
+            android:enabled="false"
+            android:maxLength="10"/>
+
+        <ImageButton
+            android:id="@id/imageAddButton4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@android:drawable/ic_menu_add"
+            android:clickable="true"
+            android:layout_marginEnd="21dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="98dp"
+        android:text="Save Goal" />
+
+
+</RelativeLayout>

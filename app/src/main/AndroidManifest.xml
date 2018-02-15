@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.daniel.FitTrackerApp">
+
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+
+    <uses-feature android:name="android.hardware.sensor.stepcounter" android:required="true"/>
+
+    <application
+        android:name="com.daniel.FitTrackerApp.App"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:icon="@drawable/running_icon"
+        android:theme="@style/NoActionBar">
+
+        <uses-library android:name="com.google.android.maps" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAsF9G8fFIXkd7M3HRl6Ro04rw0hItzdks" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        
+        <provider
+            android:authorities="com.example.daniel.gmapp"
+            android:name="com.daniel.FitTrackerApp.provider.TrackerProvider"
+            android:syncable="true"
+            android:exported="false"
+            />
+
+        <receiver android:name="com.daniel.FitTrackerApp.receivers.AlarmReceiver"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="RestartService"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.daniel.FitTrackerApp.receivers.BootReceiver"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.daniel.FitTrackerApp.receivers.BroadcastReceiver">
+            <intent-filter>
+                <action android:name="NewDay"></action>
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.daniel.FitTrackerApp.sportactivity.SportActivityTrackingService" />
+        <service android:name="com.daniel.FitTrackerApp.services.DailyStatsCounter"
+            android:process=":remote" />
+        <service android:name="com.daniel.FitTrackerApp.services.WorkoutSender" />
+        <service android:name="com.daniel.FitTrackerApp.services.NetworkService" />
+        <service android:name="com.daniel.FitTrackerApp.services.StatsCounter" />
+        <service android:name="com.daniel.FitTrackerApp.services.ActivityRecognizingService"
+            android:exported="false"/>
+        <service
+            android:name="com.daniel.FitTrackerApp.services.DownloadImageService"
+            android:exported="false" />
+
+        <service android:name="com.daniel.FitTrackerApp.authenticate.AuthenticationService">
+            <intent-filter>
+            <action android:name="android.accounts.AccountAuthenticator"/>
+        </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator"/>
+        </service>
+
+        <service android:name="com.daniel.FitTrackerApp.synchronization.SyncService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/sync_adapter" />
+        </service>
+
+        <!-- 05:8D:1D:C7:9A:63:1E:BB:C6:28:87:A4:60:66:48:66:A9:EC:6D:E9 -->
+        <activity android:name="com.daniel.FitTrackerApp.activities.UIDataListActivity" />
+        <activity
+            android:name="com.daniel.FitTrackerApp.activities.MainActivity"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|fontScale|uiMode|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name="com.daniel.FitTrackerApp.fragments.SelectedActivityFromDB"/>
+        <activity android:name="com.daniel.FitTrackerApp.activities.SelectedActivityFromDBSplits"/>
+        <activity android:name="com.daniel.FitTrackerApp.activities.LoginActivity"
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|fontScale|uiMode|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.daniel.FitTrackerApp.activities.ActivitiesActivity">
+        </activity>
+        <activity android:name="com.daniel.FitTrackerApp.activities.CrashActivity">
+        </activity>
+    </application>
+
+</manifest>
