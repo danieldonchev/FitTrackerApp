@@ -1,0 +1,1 @@
+Use flatc.exe --java [file-name] to compile

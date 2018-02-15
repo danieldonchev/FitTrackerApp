@@ -1,0 +1,94 @@
+
+namespace com.daniel.FitTrackerApp;
+
+struct Split
+{
+	id:int;
+	distance:double;
+	duration:long;
+}
+
+struct Polyline{
+	lat:double;
+	lon:double;
+}
+
+struct Markers{
+	lat:double;
+	lon:double;
+	colour:int;
+}
+
+table Splits{
+	splits:[Split];
+}
+
+table SportActivityMap{
+	polyline:[Polyline];
+	markers:[Markers];
+}
+
+table SportActivity{
+	id:string;
+	activity:string;
+	distance:double = -1;
+	startTimestamp:long = -1;
+	endTimestamp:long = -1;
+	duration:long = -1;
+	calories:int = -1;
+	steps:long = -1;
+	splits:Splits;
+	sportActivityMap:SportActivityMap;
+	type:int;
+	last_modified:long;
+}
+
+table SportActivities{
+	sportActivities:[SportActivity];
+}
+
+table Goal{
+	id:string;
+	type:int;
+	distance:double;
+	duration:long;
+	calories:long;
+	steps:long;
+	fromDate:long;
+	toDate:long;
+	last_modified:long;
+}
+
+table Goals{
+	goals:[Goal];
+}
+
+table SportActivityWithOwner{
+	name:string;
+	activityId:string;
+	userId:string;
+	profile_pic:[byte];
+	startPoint:Polyline;
+	activity:string;
+	distance:double;
+	duration:long;
+	startTimestamp:long;
+	endTimestamp:long;
+	steps:long;
+}
+
+table SportActivitiesWithOwner{
+	sportActivities:[SportActivityWithOwner];
+}
+
+table Weight{
+	weight:double;
+	date:long;
+	last_modified:long;
+}
+
+table Weights{
+	weights:[Weight];
+}
+
+root_type SportActivity;
