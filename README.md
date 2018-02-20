@@ -1,7 +1,5 @@
 # FitTrackerApp
 
-# Description
-
 An android app that uses gps and system sensors to track a person's physical activities. </br>
   Tracks different activities in background with system sensors based on the ActivityRecognitionApi. </br>
    Can also track user chosen activity with gps.
