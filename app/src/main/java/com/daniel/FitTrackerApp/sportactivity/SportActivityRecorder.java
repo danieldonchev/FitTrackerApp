@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.SphericalUtil;
+import com.tracker.shared.Entities.SplitWeb;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -273,7 +274,7 @@ public class SportActivityRecorder extends AbstractSportActivityRecorder impleme
         lastModified = System.currentTimeMillis();
         calculateFinalData(context, isMetric, userGender, userHeight, userWeight, userAge, distance);
         addFinalSplit();
-        com.tracker.shared.SportActivity sportActivity = toDTO();
+        com.tracker.shared.Entities.SportActivityWeb sportActivity = toDTO();
 
         DBHelper.getInstance().addActivity(sportActivity, userID, context, 0, type);
         AppNetworkManager.sendSportActivity(context, sportActivity);
@@ -297,13 +298,13 @@ public class SportActivityRecorder extends AbstractSportActivityRecorder impleme
         }
     }
 
-    public com.tracker.shared.SportActivity toDTO(){
-        ArrayList<com.tracker.shared.Split> splitsDTO = new ArrayList<>();
+    public com.tracker.shared.Entities.SportActivityWeb toDTO(){
+        ArrayList<SplitWeb> splitsDTO = new ArrayList<>();
         for(Split split : splits){
-            splitsDTO.add(new com.tracker.shared.Split(split.getId(), split.duration, split.distance));
+            splitsDTO.add(new SplitWeb(split.getId(), split.duration, split.distance));
         }
 
-        return new com.tracker.shared.SportActivity(UUID.randomUUID(),
+        return new com.tracker.shared.Entities.SportActivityWeb(UUID.randomUUID().toString(),
                                                     workout,
                                                     duration,
                                                     distanceMeters,
@@ -312,7 +313,6 @@ public class SportActivityRecorder extends AbstractSportActivityRecorder impleme
                                                     sportActivityMap.toSharedSportActivityMap(),
                                                     startTimeStamp,
                                                     endTimeStamp,
-                                                    type,
                                                     lastModified,
                                                     splitsDTO);
     }

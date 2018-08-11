@@ -50,21 +50,21 @@ public class SportActivityMap
                 .zoom(SportActivityMap.defaultCameraZoom).build();
     }
 
-    public com.tracker.shared.SportActivityMap toSharedSportActivityMap()
+    public com.tracker.shared.Entities.SportActivityMap toSharedSportActivityMap()
     {
-        com.tracker.shared.SportActivityMap sportActivityMap = new com.tracker.shared.SportActivityMap();
+        com.tracker.shared.Entities.SportActivityMap sportActivityMap = new com.tracker.shared.Entities.SportActivityMap();
         ListIterator<LatLng> polylineIterator = this.polylineOptions.getPoints().listIterator();
         ListIterator<LatLng> markerIterator = this.markerPositions.listIterator();
 
         for(LatLng latLng : polylineOptions.getPoints())
         {
-            com.tracker.shared.LatLng simpleLatLng = new com.tracker.shared.LatLng(latLng.latitude, latLng.longitude);
+            com.tracker.shared.Entities.LatLng simpleLatLng = new com.tracker.shared.Entities.LatLng(latLng.latitude, latLng.longitude);
             sportActivityMap.getPolyline().add(simpleLatLng);
         }
 
         for(LatLng latLng : markerPositions)
         {
-            com.tracker.shared.LatLng simpleLatLng = new com.tracker.shared.LatLng(latLng.latitude, latLng.longitude);
+            com.tracker.shared.Entities.LatLng simpleLatLng = new com.tracker.shared.Entities.LatLng(latLng.latitude, latLng.longitude);
             sportActivityMap.getMarkers().add(simpleLatLng);
         }
 
@@ -122,7 +122,7 @@ public class SportActivityMap
 //        ByteBuffer buf = ByteBuffer.wrap(bytesRead);
 //        flatbuf.SportActivityMap sportActivityMap = flatbuf.SportActivityMap.getRootAsSportActivityMap(buf);
 
-        com.tracker.shared.SportActivityMap map = new com.tracker.shared.SportActivityMap();
+        com.tracker.shared.Entities.SportActivityMap map = new com.tracker.shared.Entities.SportActivityMap();
         map.deserialize(bytesRead);
 
         for(int i = 0; i < map.getMarkers().size(); i++){

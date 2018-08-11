@@ -16,6 +16,7 @@ import com.daniel.FitTrackerApp.utils.AppUtils;
 import com.daniel.FitTrackerApp.utils.HttpConstants;
 import com.daniel.FitTrackerApp.utils.HttpsClient;
 import com.daniel.FitTrackerApp.utils.IntentServiceResultReceiver;
+import com.tracker.shared.Entities.WeightWeb;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,7 +33,7 @@ import static com.daniel.FitTrackerApp.services.WorkoutSender.URL_INTENT_STRING;
 
 public class AppNetworkManager {
 
-    public static void sendSportActivity(Context context, com.tracker.shared.SportActivity sportActivity){
+    public static void sendSportActivity(Context context, com.tracker.shared.Entities.SportActivityWeb sportActivity){
         Intent intent = new Intent(context, WorkoutSender.class);
         intent.putExtra(WorkoutSender.DATA_INTENT_STRING, sportActivity.serialize());
         intent.putExtra(URL_INTENT_STRING, API.sportActivity);
@@ -41,7 +42,7 @@ public class AppNetworkManager {
         context.startService(intent);
     }
 
-    public static void sendSportActivityUpdate(Context context, com.tracker.shared.SportActivity activity){
+    public static void sendSportActivityUpdate(Context context, com.tracker.shared.Entities.SportActivityWeb activity){
         Intent intent = new Intent(context, WorkoutSender.class);
         intent.putExtra(WorkoutSender.DATA_INTENT_STRING, activity.serialize());
         intent.putExtra(URL_INTENT_STRING, API.sportActivity);
@@ -78,7 +79,7 @@ public class AppNetworkManager {
     }
 
     public static void sendGoal(Context context, Goal goal){
-        com.tracker.shared.Goal toGoal = goal.toServerGoal();
+        com.tracker.shared.Entities.GoalWeb toGoal = goal.toServerGoal();
         Intent intent = new Intent(context, WorkoutSender.class);
         intent.putExtra(WorkoutSender.DATA_INTENT_STRING, toGoal.serialize());
         intent.putExtra(URL_INTENT_STRING, API.goal);
@@ -88,7 +89,7 @@ public class AppNetworkManager {
     }
 
     public static void sendGoalUpdate(Context context, Goal goal){
-        com.tracker.shared.Goal toGoal = goal.toServerGoal();
+        com.tracker.shared.Entities.GoalWeb toGoal = goal.toServerGoal();
         Intent intent = new Intent(context, WorkoutSender.class);
         intent.putExtra(WorkoutSender.DATA_INTENT_STRING, toGoal.serialize());
         intent.putExtra(URL_INTENT_STRING, API.goal);
@@ -126,7 +127,7 @@ public class AppNetworkManager {
         context.startService(intent);
     }
 
-    public static void sendWeight(Context context, com.tracker.shared.Weight weight){
+    public static void sendWeight(Context context, WeightWeb weight){
         Intent intent = new Intent(context, WorkoutSender.class);
         intent.putExtra(WorkoutSender.DATA_INTENT_STRING, weight.serialize());
         intent.putExtra(URL_INTENT_STRING, API.weight);

@@ -26,7 +26,7 @@ public class CustomGoal extends Goal {
         this.toDate = toDate;
     }
 
-    public CustomGoal(UUID id, double distance, long duration, long calories, long steps, long fromDate, long toDate){
+    public CustomGoal(String id, double distance, long duration, long calories, long steps, long fromDate, long toDate){
         super(id, Goal.CUSTOM, distance, duration, calories, steps);
         this.fromDate = new Date(fromDate);
         this.toDate = new Date(toDate);
@@ -56,8 +56,8 @@ public class CustomGoal extends Goal {
     }
 
     @Override
-    public com.tracker.shared.Goal toServerGoal() {
-        com.tracker.shared.Goal goal = new com.tracker.shared.Goal(id,
+    public com.tracker.shared.Entities.GoalWeb toServerGoal() {
+        com.tracker.shared.Entities.GoalWeb goal = new com.tracker.shared.Entities.GoalWeb(id,
                 CUSTOM,
                 distance,
                 duration,
@@ -70,7 +70,7 @@ public class CustomGoal extends Goal {
     }
 
     @Override
-    public void fromServerGoal(com.tracker.shared.Goal goal) {
+    public void fromServerGoal(com.tracker.shared.Entities.GoalWeb goal) {
         this.id = goal.getId();
         this.distance = goal.getDistance();
         this.duration = goal.getDuration();

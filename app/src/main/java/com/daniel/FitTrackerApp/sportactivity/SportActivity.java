@@ -11,13 +11,17 @@ public class SportActivity extends AbstractSportActivity
     public static final int TRACKED = 2;
     public static final int MANUAL_ADD = 3;
 
-    private UUID id;
+    private String id;
     private SportActivityMap sportActivityMap;
     private long startTimestamp;
     private long endTimestamp;
     private ArrayList<Split> splits;
 
-    public SportActivity(UUID id, String activity)
+    public SportActivity(String id){
+        this.id = id;
+    }
+
+    public SportActivity(String id, String activity)
     {
         this.workout = activity;
         this.id = id;
@@ -28,7 +32,7 @@ public class SportActivity extends AbstractSportActivity
     public SportActivity(String activity, long duration, double distance, long steps, int calories, SportActivityMap sportActivityMap, long startTimestamp,
                          long endTimestamp, long lastModified, ArrayList<Split> splits)
     {
-        this(UUID.randomUUID(), activity);
+        this(UUID.randomUUID().toString(), activity);
         this.duration = duration;
         this.distance = distance;
         this.steps = steps;
@@ -40,9 +44,9 @@ public class SportActivity extends AbstractSportActivity
         this.splits = splits;
     }
 
-    public com.tracker.shared.SportActivity toShortSportActivityServer()
+    public com.tracker.shared.Entities.SportActivityWeb toShortSportActivityServer()
     {
-        return new com.tracker.shared.SportActivity(id,
+        return new com.tracker.shared.Entities.SportActivityWeb(id.toString(),
                 workout,
                 duration,
                 distance,
@@ -50,36 +54,8 @@ public class SportActivity extends AbstractSportActivity
                 (int)calories,
                 startTimestamp,
                 endTimestamp,
-                type,
                 lastModified);
     }
-
-    public com.tracker.shared.SportActivity toSportActivityServer()
-    {
-        com.tracker.shared.SportActivityMap sportActivityMap = this.getSportActivityMap().toSharedSportActivityMap();
-        ArrayList<com.tracker.shared.Split> splits = new ArrayList<>();
-
-        for (Split split : this.splits)
-        {
-            splits.add(new com.tracker.shared.Split(split.getId(), split.duration, split.distance));
-        }
-
-        com.tracker.shared.SportActivity sportActivity = new com.tracker.shared.SportActivity(id,
-                                                                                            workout,
-                                                                                            duration,
-                                                                                            distance,
-                                                                                            (int) steps,
-                                                                                            (int) calories,
-                                                                                            sportActivityMap,
-                                                                                            startTimestamp,
-                                                                                            endTimestamp,
-                                                                                            type,
-                                                                                            lastModified,
-                                                                                            splits);
-
-        return sportActivity;
-    }
-
 
     public String getStepsString() {
         return doubleToString(this.steps);
@@ -109,7 +85,7 @@ public class SportActivity extends AbstractSportActivity
         this.endTimestamp = endTimestamp;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 

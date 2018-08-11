@@ -14,9 +14,9 @@ import com.daniel.FitTrackerApp.provider.ProviderContract;
 import com.daniel.FitTrackerApp.synchronization.SyncHelper;
 import com.daniel.FitTrackerApp.utils.AppUtils;
 import com.daniel.FitTrackerApp.utils.HttpsClient;
-import com.tracker.shared.Goal;
-import com.tracker.shared.SportActivity;
-import com.tracker.shared.Weight;
+import com.tracker.shared.Entities.GoalWeb;
+import com.tracker.shared.Entities.SportActivityWeb;
+import com.tracker.shared.Entities.WeightWeb;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -141,7 +141,7 @@ public class WorkoutSender extends IntentService
                         } else {
                             JSONObject response = new JSONObject(string);
                             if(response.has("data")){
-                                if((response.get("data")).equals(SportActivity.class.getSimpleName()))
+                                if((response.get("data")).equals(SportActivityWeb.class.getSimpleName()))
                                 {
                                     ContentValues values = new ContentValues();
                                     values.put(ProviderContract.SportActivityEntry.SYNCED, 1);
@@ -151,14 +151,14 @@ public class WorkoutSender extends IntentService
                                             values);
                                 } else if((response.get("data")).equals("settings")){
 
-                                } else if(response.get("data").equals(Goal.class.getSimpleName())){
+                                } else if(response.get("data").equals(GoalWeb.class.getSimpleName())){
                                     ContentValues values = new ContentValues();
                                     values.put(ProviderContract.GoalEntry.SYNCED, 1);
                                     DBHelper.getInstance().updateGoalTime(this,
                                             PreferencesHelper.getInstance().getCurrentUserId(this),
                                             response.getString("id"),
                                             values);
-                                } else if(response.get("data").equals(Weight.class.getSimpleName())){
+                                } else if(response.get("data").equals(WeightWeb.class.getSimpleName())){
                                     ContentValues values = new ContentValues();
                                     values.put(ProviderContract.WeightEntry.SYNCED, 1);
                                     DBHelper.getInstance().updateWeightTime(this,
@@ -208,7 +208,7 @@ public class WorkoutSender extends IntentService
                 code = connection.getResponseCode();
                 InputStream in = connection.getInputStream();
                 if(connection.getHeaderField("Data-Type") != null){
-                    if(connection.getHeaderField("Data-Type").equals(SportActivity.class.getSimpleName())){
+                    if(connection.getHeaderField("Data-Type").equals(SportActivityWeb.class.getSimpleName())){
                         //SportActivity sportActivity = new SportActivity().deserialize(AppUtils.readFully(in, -1, true));
                     } else if(connection.getHeaderField("Data-Type").equals("settings")){
                         PreferencesHelper.getInstance().setCurrentAccountSettings(getApplicationContext(), AppUtils.readStream(in));
@@ -237,13 +237,13 @@ public class WorkoutSender extends IntentService
                 try {
                     JSONObject jsonObject = new JSONObject(AppUtils.readStream(in));
                     String dataType = jsonObject.getString("data");
-                    if(dataType.equals(SportActivity.class.getSimpleName())){
+                    if(dataType.equals(SportActivityWeb.class.getSimpleName())){
 
                             getContentResolver().delete(ProviderContract.SportActivityEntry.CONTENT_URI.buildUpon().appendPath("1")
                                     .appendPath(jsonObject.getString("id"))
                                     .appendPath(PreferencesHelper.getInstance().getCurrentUserId(getApplicationContext())).build(), null, null);
 
-                    } else if(dataType.equals(Goal.class.getSimpleName())){
+                    } else if(dataType.equals(GoalWeb.class.getSimpleName())){
 
                             getContentResolver().delete(ProviderContract.GoalEntry.CONTENT_URI.buildUpon().appendPath("1")
                                     .appendPath(jsonObject.getString("id"))
@@ -287,7 +287,7 @@ public class WorkoutSender extends IntentService
                     String string = AppUtils.readStream(in);
                     try {
                         JSONObject response = new JSONObject(string);
-                        if((response.get("data")).equals(SportActivity.class.getSimpleName()))
+                        if((response.get("data")).equals(SportActivityWeb.class.getSimpleName()))
                         {
                             ContentValues values = new ContentValues();
                             values.put(ProviderContract.SportActivityEntry.SYNCED, 1);
@@ -295,7 +295,7 @@ public class WorkoutSender extends IntentService
                                                                             PreferencesHelper.getInstance().getCurrentUserId(this),
                                                                             response.getString("id"),
                                                                             values);
-                        } else if ((response.get("data")).equals(Goal.class.getSimpleName())){
+                        } else if ((response.get("data")).equals(GoalWeb.class.getSimpleName())){
                             ContentValues values = new ContentValues();
                             values.put(ProviderContract.GoalEntry.LAST_MODIFIED, connection.getHeaderField("Sync-Time"));
                             values.put(ProviderContract.GoalEntry.SYNCED, 1);

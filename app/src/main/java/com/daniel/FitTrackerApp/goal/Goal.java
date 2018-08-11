@@ -20,7 +20,7 @@ public class Goal {
     public static int MONTHLY = 2;
     public static int CUSTOM = 3;
 
-    protected UUID id;
+    protected String id;
     protected int type;
     @Nullable protected double distance;
     @Nullable protected long duration;
@@ -30,7 +30,7 @@ public class Goal {
     protected long lastModified;
 
     public Goal() {
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Goal {
         this.steps = steps;
     }
 
-    public Goal(UUID id, int type, double distance, long duration, long calories, long steps){
+    public Goal(String id, int type, double distance, long duration, long calories, long steps){
         this.id = id;
         this.type = type;
         this.distance = distance;
@@ -102,8 +102,8 @@ public class Goal {
         }
     }
 
-    public com.tracker.shared.Goal toServerGoal(){
-        return new com.tracker.shared.Goal(id,
+    public com.tracker.shared.Entities.GoalWeb toServerGoal(){
+        return new com.tracker.shared.Entities.GoalWeb(id,
                 type,
                 distance,
                 duration,
@@ -114,7 +114,7 @@ public class Goal {
                 lastModified);
     }
 
-    public void fromServerGoal(com.tracker.shared.Goal goal){
+    public void fromServerGoal(com.tracker.shared.Entities.GoalWeb goal){
         this.id = goal.getId();
         this.type = goal.getType();
         this.distance = goal.getDistance();
@@ -191,11 +191,11 @@ public class Goal {
         this.steps = steps;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

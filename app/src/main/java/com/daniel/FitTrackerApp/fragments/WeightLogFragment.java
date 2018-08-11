@@ -16,7 +16,7 @@ import com.daniel.FitTrackerApp.dialogs.PickerSuccessListener;
 import com.daniel.FitTrackerApp.helpers.DBHelper;
 import com.daniel.FitTrackerApp.helpers.PreferencesHelper;
 import com.daniel.FitTrackerApp.utils.UnitUtils;
-import com.tracker.shared.Weight;
+import com.tracker.shared.Entities.WeightWeb;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,7 +27,7 @@ public class WeightLogFragment extends Fragment {
 
     private ImageButton nextDateButton, previousDateButton;
     private TextView dateTextView, weightTextView, unitTextView, dailyChangeTextView, weeklyChangeTextView, monthlyChangeTextView;
-    private Weight weight;
+    private WeightWeb weight;
     private Calendar calendar, changeCalendar;
     private String userID;
     private SimpleDateFormat simpleDateFormat;
@@ -142,12 +142,12 @@ public class WeightLogFragment extends Fragment {
     private void calculateChanges(){
         changeCalendar.setTimeInMillis(calendar.getTimeInMillis());
         changeCalendar.set(Calendar.MONTH, changeCalendar.get(Calendar.MONTH) - 1);
-        Weight previousMonth = DBHelper.getInstance().getWeightByDate(getContext(), userID, changeCalendar.getTimeInMillis());
+        WeightWeb previousMonth = DBHelper.getInstance().getWeightByDate(getContext(), userID, changeCalendar.getTimeInMillis());
         changeCalendar.set(Calendar.MONTH, changeCalendar.get(Calendar.MONTH) + 1);
         changeCalendar.add(Calendar.DAY_OF_YEAR, - 1);
-        Weight previousDay = DBHelper.getInstance().getWeightByDate(getContext(), userID, changeCalendar.getTimeInMillis());
+        WeightWeb previousDay = DBHelper.getInstance().getWeightByDate(getContext(), userID, changeCalendar.getTimeInMillis());
         changeCalendar.add(Calendar.DAY_OF_YEAR, -6);
-        Weight previousWeek = DBHelper.getInstance().getWeightByDate(getContext(), userID, changeCalendar.getTimeInMillis());
+        WeightWeb previousWeek = DBHelper.getInstance().getWeightByDate(getContext(), userID, changeCalendar.getTimeInMillis());
 
         if(previousDay.weight == 0){
             dailyChangeTextView.setText("-");

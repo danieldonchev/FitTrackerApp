@@ -26,12 +26,12 @@ android {
     }
 
     dexOptions {
-        javaMaxHeapSize "6g"
+        javaMaxHeapSize "8g"
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     testOptions {
@@ -56,13 +56,13 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:1.10.19'
-    implementation 'com.android.support:appcompat-v7:26.0.2'
+    implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.google.android.gms:play-services:12.0.1'
     implementation 'com.google.maps.android:android-maps-utils:0.4+'
     implementation 'com.google.code.gson:gson:2.2.+'
     implementation 'com.android.support:design:25.0.0'
     implementation 'com.facebook.android:facebook-android-sdk:4.+'
-    implementation 'com.android.support:recyclerview-v7:25.0.0'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.takisoft.fix:preference-v7:25.2.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.1'
     implementation 'commons-io:commons-io:+'
@@ -71,7 +71,6 @@ dependencies {
     //releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     //testImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     //implementation 'org.apache.commons:commons-lang3:3.4'
-    //implementation project(':trakerdata')
 
     //Maven local jars
     implementation 'com.tracker.shared:TrackerData:1.0-SNAPSHOT'

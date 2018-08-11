@@ -26,15 +26,16 @@ import com.daniel.FitTrackerApp.dialogs.UpdateUserStatsDialog;
 import com.daniel.FitTrackerApp.helpers.DBHelper;
 import com.daniel.FitTrackerApp.helpers.PreferencesHelper;
 import com.daniel.FitTrackerApp.provider.ProviderContract;
+import com.daniel.FitTrackerApp.sportactivity.Split;
 import com.daniel.FitTrackerApp.utils.AppUtils;
 import com.daniel.FitTrackerApp.utils.HttpConstants;
 import com.daniel.FitTrackerApp.utils.HttpsClient;
-import com.tracker.shared.Goal;
-import com.tracker.shared.SerializeHelper;
-import com.tracker.shared.Split;
-import com.tracker.shared.SportActivity;
-import com.tracker.shared.SportActivityMap;
-import com.tracker.shared.Weight;
+import com.tracker.shared.Entities.GoalWeb;
+import com.tracker.shared.Entities.SerializeHelper;
+import com.tracker.shared.Entities.SplitWeb;
+import com.tracker.shared.Entities.SportActivityMap;
+import com.tracker.shared.Entities.SportActivityWeb;
+import com.tracker.shared.Entities.WeightWeb;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -248,12 +249,12 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
             code = connection.getResponseCode();
             if(code == 200){
                 InputStream inputStream = connection.getInputStream();
-                ArrayList<SportActivity> sportActivities = SerializeHelper.deserializeSportActivities(AppUtils.readFully(inputStream, -1, true));
+                ArrayList<SportActivityWeb> sportActivities = SerializeHelper.deserializeSportActivities(AppUtils.readFully(inputStream, -1, true));
 
                 int i = 0;
-                for(SportActivity sportActivity : sportActivities){
+                for(SportActivityWeb sportActivity : sportActivities){
                     Log.v("SportActivity id", "number: " + String.valueOf(i++));
-                    DBHelper.getInstance().addActivity(sportActivity, userID, getContext(), 1, sportActivity.getType());
+                    DBHelper.getInstance().addActivity(sportActivity, userID, getContext(), 1, 0);
 
                 }
                 if(connection.getHeaderField("Sync-Time") != null){
@@ -340,21 +341,21 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
                                     ProviderContract.SportActivityEntry.SYNCED + "=0";
         Cursor c = mContentResolver.query(ProviderContract.SportActivityEntry.CONTENT_URI.buildUpon().appendPath(userID).build(),
                 ProviderContract.SportActivityEntry.FULL_PROJECTION, activitiesWhere, null, null);
-        ArrayList<SportActivity> sportActivities = new ArrayList<>();
+        ArrayList<SportActivityWeb> sportActivities = new ArrayList<>();
         if(c.moveToFirst()){
             do{
-                List<Split> splits = new ArrayList<>();
+                List<SplitWeb> splits = new ArrayList<>();
                 Cursor splitCursor = mContentResolver.query(ProviderContract.SportActivityEntry.SPLIT_CONTENT_URI.buildUpon().appendPath(c.getString(0)).appendPath(userID).build(),
                         new String[]{ProviderContract.SportActivityEntry.SPLIT_ID, ProviderContract.SportActivityEntry.SPLIT_DISTANCE, ProviderContract.SportActivityEntry.SPLIT_DURATION},
                         null, null, null);
                 if(splitCursor.moveToFirst()){
                     do{
-                        splits.add(new Split(splitCursor.getInt(0), splitCursor.getLong(1), splitCursor.getDouble(0)));
+                        splits.add(new SplitWeb(splitCursor.getInt(0), splitCursor.getLong(1), splitCursor.getDouble(0)));
                     }while (splitCursor.moveToNext());
                 }
 
                 DBHelper.getInstance().getActivitySplits(getContext(), c.getString(0), userID);
-                SportActivity sportActivity = new SportActivity(UUID.fromString(c.getString(0)),
+                SportActivityWeb sportActivity = new SportActivityWeb(c.getString(0),
                         c.getString(1),
                         c.getLong(3),
                         c.getDouble(2),
@@ -363,9 +364,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
                         new SportActivityMap().deserialize(c.getBlob(6)),
                         c.getLong(7),
                         c.getLong(8),
-                        c.getInt(9),
                         c.getLong(10),
-                        (ArrayList<Split>) splits);
+                        (ArrayList<SplitWeb>) splits);
 
                 sportActivities.add(sportActivity);
             }while (c.moveToNext());
@@ -431,11 +431,11 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
                 ProviderContract.GoalEntry.SYNCED + "=0";
         Cursor c = mContentResolver.query(ProviderContract.GoalEntry.CONTENT_URI.buildUpon().appendPath(userID).build(),
                 ProviderContract.GoalEntry.FULL_PROJECTION, activitiesWhere, null, null);
-        ArrayList<Goal> goals = new ArrayList<>();
+        ArrayList<GoalWeb> goals = new ArrayList<>();
         if(c.moveToFirst()){
             do{
-                Goal goal = new Goal(
-                        UUID.fromString(c.getString(0)),
+                GoalWeb goal = new GoalWeb(
+                        c.getString(0),
                         c.getInt(1),
                         c.getDouble(2),
                         c.getLong(3),
@@ -504,10 +504,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
             code = connection.getResponseCode();
             if(code == 200){
                 InputStream inputStream = connection.getInputStream();
-                ArrayList<Goal> goals = SerializeHelper.deserializeGoals(AppUtils.readFully(inputStream, -1, true));
+                ArrayList<GoalWeb> goals = SerializeHelper.deserializeGoals(AppUtils.readFully(inputStream, -1, true));
 
                 int i = 0;
-                for(Goal goal : goals){
+                for(GoalWeb goal : goals){
                     Log.v("SportActivity id", "number: " + String.valueOf(i++));
 
                     DBHelper.getInstance().addGoal(getContext(), userID, goal, 1);
@@ -559,9 +559,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
             code = connection.getResponseCode();
             if(code == 200){
                 InputStream inputStream = connection.getInputStream();
-                ArrayList<Weight> weights = SerializeHelper.deserializeWeights(AppUtils.readFully(inputStream, -1, true));
+                ArrayList<WeightWeb> weights = SerializeHelper.deserializeWeights(AppUtils.readFully(inputStream, -1, true));
 
-                for(Weight weight : weights){
+                for(WeightWeb weight : weights){
                     DBHelper.getInstance().addWeight(getContext(), userID, weight, 1);
                 }
                 if(connection.getHeaderField("Sync-Time") != null){
@@ -579,10 +579,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter
                 ProviderContract.WeightEntry.SYNCED + "=0";
         Cursor c = mContentResolver.query(ProviderContract.WeightEntry.CONTENT_URI.buildUpon().appendPath(userID).build(),
                 ProviderContract.WeightEntry.FULL_PROJECTION, activitiesWhere, null, null);
-        ArrayList<Weight> weights = new ArrayList<>();
+        ArrayList<WeightWeb> weights = new ArrayList<>();
         if(c.moveToFirst()){
             do{
-                Weight weight = new Weight(c.getDouble(2),
+                WeightWeb weight = new WeightWeb(c.getDouble(2),
                                             c.getLong(0),
                                             c.getLong(3));
 

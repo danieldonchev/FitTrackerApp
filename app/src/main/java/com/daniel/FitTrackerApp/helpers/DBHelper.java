@@ -23,8 +23,7 @@ import com.daniel.FitTrackerApp.sportactivity.SportActivity;
 import com.daniel.FitTrackerApp.sportactivity.SportActivitySummariesByTime;
 import com.daniel.FitTrackerApp.sportactivity.SportActivitySummary;
 import com.daniel.FitTrackerApp.synchronization.SyncHelper;
-import com.tracker.shared.Weight;
-
+import com.tracker.shared.Entities.WeightWeb;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -194,10 +193,10 @@ public class DBHelper extends SQLiteOpenHelper {
 //        return sportActivity.getId();
 //    }
 
-    public UUID addActivity(com.tracker.shared.SportActivity sportActivity, String id, Context context, int synced, int type){
+    public String addActivity(com.tracker.shared.Entities.SportActivityWeb sportActivity, String id, Context context, int synced, int type){
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ProviderContract.AccountEntry._ID, sportActivity.getId().toString());
+        contentValues.put(ProviderContract.AccountEntry._ID, sportActivity.getId());
         contentValues.put(ProviderContract.SportActivityEntry.ACCOUNT_ID, id);
         contentValues.put(ProviderContract.SportActivityEntry.ACTIVITY, sportActivity.getWorkout());
         contentValues.put(ProviderContract.SportActivityEntry.DISTANCE, sportActivity.getDistance());
@@ -214,7 +213,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentResolver mContentResolver = context.getContentResolver();
 
         mContentResolver.insert(ProviderContract.SportActivityEntry.CONTENT_URI.buildUpon().appendPath(id).build(), contentValues);
-        addSplits(sportActivity.getId().toString(), id, sportActivity.getSplits(), mContentResolver);
+        addSplits(sportActivity.getId().toString(), id, sportActivity.getSplitWebs(), mContentResolver);
 
         updateLastModifiedTime(context, id, ProviderContract.SyncEntry.LAST_MODIFIED_ACTIVITIES, System.currentTimeMillis());
         return sportActivity.getId();
@@ -302,13 +301,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return activities;
     }
 
-    public int addSplits(String sportActivityID, String userID, List<com.tracker.shared.Split> splits, ContentResolver contentResolver){
+    public int addSplits(String sportActivityID, String userID, List<com.tracker.shared.Entities.SplitWeb> splits, ContentResolver contentResolver){
 
         try {
             if(splits != null){
                 ContentValues[] arrayValues = new ContentValues[splits.size()];
                 int i = 0;
-                for (com.tracker.shared.Split split : splits) {
+                for (com.tracker.shared.Entities.SplitWeb split : splits) {
                     arrayValues[i] = new ContentValues();
                     arrayValues[i].put(ProviderContract.SportActivityEntry.SPLIT_ID, split.getId());
                     arrayValues[i].put(ProviderContract.SportActivityEntry.SPLIT_ACTIVITY_ID, sportActivityID);
@@ -636,7 +635,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         int parameterIndex = 0;
         if (c.moveToFirst()) {
-            sportActivity = new SportActivity(UUID.fromString(c.getString(parameterIndex++)), c.getString(parameterIndex++));
+            sportActivity = new SportActivity(c.getString(parameterIndex++), c.getString(parameterIndex++));
             sportActivity.setDistance(c.getDouble(parameterIndex++));
             sportActivity.setDuration(c.getInt(parameterIndex++));
             sportActivity.setSteps(c.getInt(parameterIndex++));
@@ -665,7 +664,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return 0;
     }
 
-    public int updateSportActivity(Context context, String userID, com.tracker.shared.SportActivity sportActivity, int synced) {
+    public int updateSportActivity(Context context, String userID, com.tracker.shared.Entities.SportActivityWeb sportActivity, int synced) {
 
         long timestamp = System.currentTimeMillis();
 
@@ -789,7 +788,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return settings;
     }
 
-    public int addGoal(Context context, String userID, com.tracker.shared.Goal goal, int synced){
+    public int addGoal(Context context, String userID, com.tracker.shared.Entities.GoalWeb goal, int synced){
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(ProviderContract.GoalEntry._ID, goal.getId().toString());
@@ -840,14 +839,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 Goal goal;
                 int type = c.getInt(1);
                 if(type != Goal.CUSTOM){
-                    goal = new Goal(UUID.fromString(c.getString(0)),
+                    goal = new Goal(c.getString(0),
                             type,
                             c.getDouble(2),
                             c.getLong(3),
                             c.getLong(4),
                             c.getLong(5));
                 } else {
-                    goal = new CustomGoal(UUID.fromString(c.getString(0)),
+                    goal = new CustomGoal(c.getString(0),
                             c.getDouble(2),
                             c.getLong(3),
                             c.getLong(4),
@@ -976,8 +975,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return stats;
     }
 
-    public Weight getWeightByDate(Context context, String userID, long date){
-        Weight weight = new Weight();
+    public WeightWeb getWeightByDate(Context context, String userID, long date){
+        WeightWeb weight = new WeightWeb();
         String[] projection = {ProviderContract.WeightEntry.WEIGHT,
                                 ProviderContract.WeightEntry.DATE};
 
@@ -994,7 +993,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return  weight;
     }
 
-    public int addWeight(Context context, String userID, Weight weight, int synced){
+    public int addWeight(Context context, String userID, WeightWeb weight, int synced){
         ContentValues contentValues = new ContentValues();
         contentValues.put(ProviderContract.WeightEntry.ACCOUNT_ID, userID);
         contentValues.put(ProviderContract.WeightEntry.WEIGHT, weight.weight);

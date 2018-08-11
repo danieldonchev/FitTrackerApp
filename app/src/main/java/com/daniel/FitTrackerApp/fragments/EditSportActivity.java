@@ -33,6 +33,7 @@ import com.daniel.FitTrackerApp.provider.ProviderContract;
 import com.daniel.FitTrackerApp.sportactivity.SportActivity;
 import com.daniel.FitTrackerApp.sportactivity.SportActivitySummary;
 import com.daniel.FitTrackerApp.utils.UnitUtils;
+import com.tracker.shared.Entities.SportActivityWeb;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class EditSportActivity extends Fragment implements ConflictDialogCallbac
     private TextView unitTextView;
     private Spinner spinner;
     private Calendar activityCalendar;
-    private com.tracker.shared.SportActivity sportActivity;
+    private SportActivityWeb sportActivity;
     private boolean isEditing, isMetric;
     private double distanceChange;
     private long durationChange, caloriesChange;
@@ -131,7 +132,7 @@ public class EditSportActivity extends Fragment implements ConflictDialogCallbac
             @Override
             public void onClick(View v) {
                 if(sportActivity == null){
-                    sportActivity = new com.tracker.shared.SportActivity(UUID.randomUUID());
+                    sportActivity = new SportActivityWeb(UUID.randomUUID().toString());
                     sportActivity.setWorkout(spinner.getSelectedItem().toString());
                 } else {
                     distance = sportActivity.getDistance();
@@ -205,13 +206,13 @@ public class EditSportActivity extends Fragment implements ConflictDialogCallbac
 
     }
 
-    public void setSportActivity(com.tracker.shared.SportActivity sportActivity)
+    public void setSportActivity(SportActivityWeb sportActivity)
     {
         this.sportActivity = sportActivity;
         isEditing = true;
     }
 
-    public void setView(com.tracker.shared.SportActivity sportActivity, boolean isEditing)
+    public void setView(SportActivityWeb sportActivity, boolean isEditing)
     {
         if(isEditing){
             long durationHour = sportActivity.getDuration() / 3600;
@@ -314,7 +315,7 @@ public class EditSportActivity extends Fragment implements ConflictDialogCallbac
 
         sportActivity.setLastModified(System.currentTimeMillis());
         if(!isEditing){
-            sportActivity.setType(SportActivity.MANUAL_ADD);
+            //sportActivity.setType(SportActivity.MANUAL_ADD);
             caloriesChange = sportActivity.getCalories();
             double avgSpeed = 0;
             if(isMetric){
