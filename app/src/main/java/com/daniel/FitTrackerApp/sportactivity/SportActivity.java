@@ -40,9 +40,9 @@ public class SportActivity extends AbstractSportActivity
         this.splits = splits;
     }
 
-    public com.traker.shared.SportActivity toShortSportActivityServer()
+    public com.tracker.shared.SportActivity toShortSportActivityServer()
     {
-        return new com.traker.shared.SportActivity(id,
+        return new com.tracker.shared.SportActivity(id,
                 workout,
                 duration,
                 distance,
@@ -54,17 +54,17 @@ public class SportActivity extends AbstractSportActivity
                 lastModified);
     }
 
-    public com.traker.shared.SportActivity toSportActivityServer()
+    public com.tracker.shared.SportActivity toSportActivityServer()
     {
-        com.traker.shared.SportActivityMap sportActivityMap = this.getSportActivityMap().toSharedSportActivityMap();
-        ArrayList<com.traker.shared.Split> splits = new ArrayList<>();
+        com.tracker.shared.SportActivityMap sportActivityMap = this.getSportActivityMap().toSharedSportActivityMap();
+        ArrayList<com.tracker.shared.Split> splits = new ArrayList<>();
 
         for (Split split : this.splits)
         {
-            splits.add(new com.traker.shared.Split(split.getId(), split.duration, split.distance));
+            splits.add(new com.tracker.shared.Split(split.getId(), split.duration, split.distance));
         }
 
-        com.traker.shared.SportActivity sportActivity = new com.traker.shared.SportActivity(id,
+        com.tracker.shared.SportActivity sportActivity = new com.tracker.shared.SportActivity(id,
                                                                                             workout,
                                                                                             duration,
                                                                                             distance,

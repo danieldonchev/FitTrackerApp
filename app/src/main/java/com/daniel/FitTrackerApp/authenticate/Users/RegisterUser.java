@@ -14,33 +14,26 @@ public class RegisterUser implements User
     private String name;
     private String email;
     private String password;
-    private String responseToken;
 
-    public RegisterUser(String name, String email, String password, String responseToken)
-    {
+    public RegisterUser(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.responseToken = responseToken;
+
     }
 
     @Override
-    public JSONObject toJson()
-    {
+    public JSONObject toJson() {
         JSONObject jsonObject = new JSONObject();
-        try
-        {
+        try {
             jsonObject.put(AbstractAuthentication.Constants.NAME, name);
             jsonObject.put(AbstractAuthentication.Constants.EMAIL, email);
             jsonObject.put(AbstractAuthentication.Constants.PASSWORD, password);
-            jsonObject.put(AbstractAuthentication.Constants.RESPONSE_TOKEN, responseToken);
             jsonObject.put(AbstractAuthentication.Constants.DEVICE, Build.DEVICE);
         }
-        catch (JSONException ex)
-        {
+        catch (JSONException ex) {
             ex.printStackTrace();
         }
-
         return jsonObject;
     }
 

@@ -16,7 +16,7 @@ import com.daniel.FitTrackerApp.dialogs.PickerSuccessListener;
 import com.daniel.FitTrackerApp.helpers.DBHelper;
 import com.daniel.FitTrackerApp.helpers.PreferencesHelper;
 import com.daniel.FitTrackerApp.utils.UnitUtils;
-import com.traker.shared.Weight;
+import com.tracker.shared.Weight;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

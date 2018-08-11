@@ -812,7 +812,7 @@ public class RecordFragment extends android.support.v4.app.Fragment implements O
 //                if(!isMockChecked)
 //                {
 //                    boolean isMock;
-//                    if (android.os.Build.LAST_MODIFIED_ACTIVITIES.SDK_INT >= 18)
+//                    if (cacert.os.Build.LAST_MODIFIED_ACTIVITIES.SDK_INT >= 18)
 //                    {
 //                        isMock = location.isFromMockProvider();
 //                    }

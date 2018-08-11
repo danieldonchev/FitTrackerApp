@@ -51,7 +51,7 @@ public class EditSportActivity extends Fragment implements ConflictDialogCallbac
     private TextView unitTextView;
     private Spinner spinner;
     private Calendar activityCalendar;
-    private com.traker.shared.SportActivity sportActivity;
+    private com.tracker.shared.SportActivity sportActivity;
     private boolean isEditing, isMetric;
     private double distanceChange;
     private long durationChange, caloriesChange;
@@ -131,7 +131,7 @@ public class EditSportActivity extends Fragment implements ConflictDialogCallbac
             @Override
             public void onClick(View v) {
                 if(sportActivity == null){
-                    sportActivity = new com.traker.shared.SportActivity(UUID.randomUUID());
+                    sportActivity = new com.tracker.shared.SportActivity(UUID.randomUUID());
                     sportActivity.setWorkout(spinner.getSelectedItem().toString());
                 } else {
                     distance = sportActivity.getDistance();
@@ -205,13 +205,13 @@ public class EditSportActivity extends Fragment implements ConflictDialogCallbac
 
     }
 
-    public void setSportActivity(com.traker.shared.SportActivity sportActivity)
+    public void setSportActivity(com.tracker.shared.SportActivity sportActivity)
     {
         this.sportActivity = sportActivity;
         isEditing = true;
     }
 
-    public void setView(com.traker.shared.SportActivity sportActivity, boolean isEditing)
+    public void setView(com.tracker.shared.SportActivity sportActivity, boolean isEditing)
     {
         if(isEditing){
             long durationHour = sportActivity.getDuration() / 3600;

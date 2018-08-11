@@ -137,14 +137,14 @@ public class AccountUtils
                 m.send();
             } catch (Exception ex) {
                 ex.printStackTrace();
-                //android.os.Process.killProcess(android.os.Process.myPid());
+                //cacert.os.Process.killProcess(cacert.os.Process.myPid());
             }
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            //android.os.Process.killProcess(android.os.Process.myPid());
+            //cacert.os.Process.killProcess(cacert.os.Process.myPid());
         }
     }
 }

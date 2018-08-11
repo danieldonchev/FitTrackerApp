@@ -1,6 +1,5 @@
 package com.daniel.FitTrackerApp.sportactivity;
 
-
 import android.graphics.Color;
 import android.location.Location;
 
@@ -9,7 +8,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.flatbuffers.FlatBufferBuilder;
+//import com.google.flatbuffers.FlatBufferBuilder;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -51,93 +50,106 @@ public class SportActivityMap
                 .zoom(SportActivityMap.defaultCameraZoom).build();
     }
 
-    public com.traker.shared.SportActivityMap toSharedSportActivityMap()
+    public com.tracker.shared.SportActivityMap toSharedSportActivityMap()
     {
-        com.traker.shared.SportActivityMap sportActivityMap = new com.traker.shared.SportActivityMap();
+        com.tracker.shared.SportActivityMap sportActivityMap = new com.tracker.shared.SportActivityMap();
         ListIterator<LatLng> polylineIterator = this.polylineOptions.getPoints().listIterator();
         ListIterator<LatLng> markerIterator = this.markerPositions.listIterator();
 
         for(LatLng latLng : polylineOptions.getPoints())
         {
-            com.traker.shared.LatLng simpleLatLng = new com.traker.shared.LatLng(latLng.latitude, latLng.longitude);
+            com.tracker.shared.LatLng simpleLatLng = new com.tracker.shared.LatLng(latLng.latitude, latLng.longitude);
             sportActivityMap.getPolyline().add(simpleLatLng);
         }
 
         for(LatLng latLng : markerPositions)
         {
-            com.traker.shared.LatLng simpleLatLng = new com.traker.shared.LatLng(latLng.latitude, latLng.longitude);
+            com.tracker.shared.LatLng simpleLatLng = new com.tracker.shared.LatLng(latLng.latitude, latLng.longitude);
             sportActivityMap.getMarkers().add(simpleLatLng);
         }
 
         return sportActivityMap;
     }
 
+
+
+//    public byte[] serializeThis()
+//    {
+//        FlatBufferBuilder builder = new FlatBufferBuilder(0);
+//        int finish = getBufferInt(builder);
+//
+//        builder.finish(finish);
+//        ByteBuffer buf = builder.dataBuffer();
+//        byte[] array = new byte[buf.remaining()];
+//        buf.get(array);
+//        return array;
+//    }
+//
+//    public int getBufferInt(FlatBufferBuilder builder)
+//    {
+//        ListIterator<LatLng> polyLineIterator = this.polylineOptions.getPoints().listIterator(this.polylineOptions.getPoints().size());
+//        ListIterator<LatLng> markerIterator = this.markerPositions.listIterator(this.markerPositions.size());
+//
+//        flatbuf.SportActivityMap.startMarkersVector(builder, this.markerPositions.size());
+//
+//        while(markerIterator.hasPrevious())
+//        {
+//            LatLng latLng = markerIterator.previous();
+//            flatbuf.Markers.createMarkers(builder, latLng.latitude, latLng.longitude, 0);
+//        }
+//
+//        int markers = builder.endVector();
+//
+//        flatbuf.SportActivityMap.startPolylineVector(builder, this.polylineOptions.getPoints().size());
+//
+//        while(polyLineIterator.hasPrevious())
+//        {
+//            LatLng latLng = polyLineIterator.previous();
+//            flatbuf.Polyline.createPolyline(builder, latLng.latitude, latLng.longitude);
+//        }
+//
+//        int polyline = builder.endVector();
+//
+//        flatbuf.SportActivityMap.startSportActivityMap(builder);
+//        flatbuf.SportActivityMap.addMarkers(builder, markers);
+//        flatbuf.SportActivityMap.addPolyline(builder, polyline);
+//
+//        return flatbuf.SportActivityMap.endSportActivityMap(builder);
+//    }
+
     public void deserialize(byte[] bytesRead)
     {
-        ByteBuffer buf = ByteBuffer.wrap(bytesRead);
-        flatbuf.SportActivityMap sportActivityMap = flatbuf.SportActivityMap.getRootAsSportActivityMap(buf);
+//        ByteBuffer buf = ByteBuffer.wrap(bytesRead);
+//        flatbuf.SportActivityMap sportActivityMap = flatbuf.SportActivityMap.getRootAsSportActivityMap(buf);
 
-        deserializeFromFlatBuffMap(sportActivityMap);
-    }
+        com.tracker.shared.SportActivityMap map = new com.tracker.shared.SportActivityMap();
+        map.deserialize(bytesRead);
 
-    public byte[] serializeThis()
-    {
-        FlatBufferBuilder builder = new FlatBufferBuilder(0);
-        int finish = getBufferInt(builder);
-
-        builder.finish(finish);
-        ByteBuffer buf = builder.dataBuffer();
-        byte[] array = new byte[buf.remaining()];
-        buf.get(array);
-        return array;
-    }
-
-    public int getBufferInt(FlatBufferBuilder builder)
-    {
-        ListIterator<LatLng> polyLineIterator = this.polylineOptions.getPoints().listIterator(this.polylineOptions.getPoints().size());
-        ListIterator<LatLng> markerIterator = this.markerPositions.listIterator(this.markerPositions.size());
-
-        flatbuf.SportActivityMap.startMarkersVector(builder, this.markerPositions.size());
-
-        while(markerIterator.hasPrevious())
-        {
-            LatLng latLng = markerIterator.previous();
-            flatbuf.Markers.createMarkers(builder, latLng.latitude, latLng.longitude, 0);
+        for(int i = 0; i < map.getMarkers().size(); i++){
+            this.markerPositions.add(new LatLng(map.getMarkers().get(i).latitude, map.getMarkers().get(i).longitude));
         }
 
-        int markers = builder.endVector();
-
-        flatbuf.SportActivityMap.startPolylineVector(builder, this.polylineOptions.getPoints().size());
-
-        while(polyLineIterator.hasPrevious())
-        {
-            LatLng latLng = polyLineIterator.previous();
-            flatbuf.Polyline.createPolyline(builder, latLng.latitude, latLng.longitude);
+        for(int i = 0; i < map.getPolyline().size(); i++){
+            this.polylineOptions.add(new LatLng(map.getPolyline().get(i).latitude, map.getPolyline().get(i).longitude));
         }
 
-        int polyline = builder.endVector();
-
-        flatbuf.SportActivityMap.startSportActivityMap(builder);
-        flatbuf.SportActivityMap.addMarkers(builder, markers);
-        flatbuf.SportActivityMap.addPolyline(builder, polyline);
-
-        return flatbuf.SportActivityMap.endSportActivityMap(builder);
+        //deserializeFromFlatBuffMap(sportActivityMap);
     }
 
-    public SportActivityMap deserializeFromFlatBuffMap(flatbuf.SportActivityMap map){
-        for(int i = 0; i < map.markersLength(); i++)
-        {
-            flatbuf.Markers marker = map.markers(i);
-            this.markerPositions.add(new LatLng(marker.lat(), marker.lon()));
-        }
-        for(int i = 0; i < map.polylineLength(); i++)
-        {
-            flatbuf.Polyline polyline = map.polyline(i);
-            this.polylineOptions.add(new LatLng(polyline.lat(), polyline.lon()));
-        }
-
-        return this;
-    }
+//    public SportActivityMap deserializeFromFlatBuffMap(flatbuf.SportActivityMap map){
+//        for(int i = 0; i < map.markersLength(); i++)
+//        {
+//            flatbuf.Markers marker = map.markers(i);
+//            this.markerPositions.add(new LatLng(marker.lat(), marker.lon()));
+//        }
+//        for(int i = 0; i < map.polylineLength(); i++)
+//        {
+//            flatbuf.Polyline polyline = map.polyline(i);
+//            this.polylineOptions.add(new LatLng(polyline.lat(), polyline.lon()));
+//        }
+//
+//        return this;
+//    }
 
     public MarkerOptions addSplitMarker(LatLng latLng)
     {

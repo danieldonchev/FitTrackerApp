@@ -18,8 +18,8 @@
             android:title="Weight Log"/>
 
         <!--<item-->
-            <!--android:id="@+id/peopleActivites"-->
-            <!--android:title="People Activites"/>-->
+            <!--cacert:id="@+id/peopleActivites"-->
+            <!--cacert:title="People Activites"/>-->
 
 
         <item
@@ -31,8 +31,8 @@
             android:title="Settings"/>
 
         <!--<item-->
-            <!--android:id="@+id/testFragment"-->
-            <!--android:title="Test Fragment"-->
+            <!--cacert:id="@+id/testFragment"-->
+            <!--cacert:title="Test Fragment"-->
             <!--/>-->
     </group>
 

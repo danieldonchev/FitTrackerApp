@@ -14,9 +14,9 @@ import com.daniel.FitTrackerApp.provider.ProviderContract;
 import com.daniel.FitTrackerApp.synchronization.SyncHelper;
 import com.daniel.FitTrackerApp.utils.AppUtils;
 import com.daniel.FitTrackerApp.utils.HttpsClient;
-import com.traker.shared.Goal;
-import com.traker.shared.SportActivity;
-import com.traker.shared.Weight;
+import com.tracker.shared.Goal;
+import com.tracker.shared.SportActivity;
+import com.tracker.shared.Weight;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -234,27 +234,24 @@ public class WorkoutSender extends IntentService
             if(connection != null) {
                 code = connection.getResponseCode();
                 InputStream in = new BufferedInputStream(connection.getInputStream());
-                String dataType = connection.getHeaderField("Data-Type");
-                if(dataType.equals(SportActivity.class.getSimpleName())){
-                    try {
-                        JSONObject jsonObject = new JSONObject(AppUtils.readStream(in));
-                        getContentResolver().delete(ProviderContract.SportActivityEntry.CONTENT_URI.buildUpon().appendPath("1")
-                                .appendPath(jsonObject.getString("id"))
-                                .appendPath(PreferencesHelper.getInstance().getCurrentUserId(getApplicationContext())).build(), null, null);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                } else if(dataType.equals(Goal.class.getSimpleName())){
-                    try {
-                        JSONObject jsonObject = new JSONObject(AppUtils.readStream(in));
-                        getContentResolver().delete(ProviderContract.GoalEntry.CONTENT_URI.buildUpon().appendPath("1")
-                                .appendPath(jsonObject.getString("id"))
-                                .appendPath(PreferencesHelper.getInstance().getCurrentUserId(getApplicationContext())).build(), null, null);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
+                try {
+                    JSONObject jsonObject = new JSONObject(AppUtils.readStream(in));
+                    String dataType = jsonObject.getString("data");
+                    if(dataType.equals(SportActivity.class.getSimpleName())){
 
+                            getContentResolver().delete(ProviderContract.SportActivityEntry.CONTENT_URI.buildUpon().appendPath("1")
+                                    .appendPath(jsonObject.getString("id"))
+                                    .appendPath(PreferencesHelper.getInstance().getCurrentUserId(getApplicationContext())).build(), null, null);
+
+                    } else if(dataType.equals(Goal.class.getSimpleName())){
+
+                            getContentResolver().delete(ProviderContract.GoalEntry.CONTENT_URI.buildUpon().appendPath("1")
+                                    .appendPath(jsonObject.getString("id"))
+                                    .appendPath(PreferencesHelper.getInstance().getCurrentUserId(getApplicationContext())).build(), null, null);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 SyncHelper.shouldSync(this, connection);
             }
         } catch (IOException e) {

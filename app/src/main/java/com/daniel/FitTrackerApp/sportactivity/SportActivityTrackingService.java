@@ -721,7 +721,7 @@ public class SportActivityTrackingService extends Service implements LocationLis
         public UUID id;
         @Override
         protected Void doInBackground(Void... params) {
-            com.traker.shared.SportActivity sportActivity = sportActivityRecorder.toDTO();
+            com.tracker.shared.SportActivity sportActivity = sportActivityRecorder.toDTO();
             id = (DBHelper.getInstance().addActivity(sportActivity, PreferencesHelper.getInstance().getCurrentUserId(getApplicationContext()), getApplicationContext(), 0,SportActivity.RECORDED));
             return null;
         }

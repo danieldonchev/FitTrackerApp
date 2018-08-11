@@ -102,8 +102,8 @@ public class Goal {
         }
     }
 
-    public com.traker.shared.Goal toServerGoal(){
-        return new com.traker.shared.Goal(id,
+    public com.tracker.shared.Goal toServerGoal(){
+        return new com.tracker.shared.Goal(id,
                 type,
                 distance,
                 duration,
@@ -114,7 +114,7 @@ public class Goal {
                 lastModified);
     }
 
-    public void fromServerGoal(com.traker.shared.Goal goal){
+    public void fromServerGoal(com.tracker.shared.Goal goal){
         this.id = goal.getId();
         this.type = goal.getType();
         this.distance = goal.getDistance();

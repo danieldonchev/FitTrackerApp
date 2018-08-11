@@ -273,7 +273,7 @@ public class SportActivityRecorder extends AbstractSportActivityRecorder impleme
         lastModified = System.currentTimeMillis();
         calculateFinalData(context, isMetric, userGender, userHeight, userWeight, userAge, distance);
         addFinalSplit();
-        com.traker.shared.SportActivity sportActivity = toDTO();
+        com.tracker.shared.SportActivity sportActivity = toDTO();
 
         DBHelper.getInstance().addActivity(sportActivity, userID, context, 0, type);
         AppNetworkManager.sendSportActivity(context, sportActivity);
@@ -297,13 +297,13 @@ public class SportActivityRecorder extends AbstractSportActivityRecorder impleme
         }
     }
 
-    public com.traker.shared.SportActivity toDTO(){
-        ArrayList<com.traker.shared.Split> splitsDTO = new ArrayList<>();
+    public com.tracker.shared.SportActivity toDTO(){
+        ArrayList<com.tracker.shared.Split> splitsDTO = new ArrayList<>();
         for(Split split : splits){
-            splitsDTO.add(new com.traker.shared.Split(split.getId(), split.duration, split.distance));
+            splitsDTO.add(new com.tracker.shared.Split(split.getId(), split.duration, split.distance));
         }
 
-        return new com.traker.shared.SportActivity(UUID.randomUUID(),
+        return new com.tracker.shared.SportActivity(UUID.randomUUID(),
                                                     workout,
                                                     duration,
                                                     distanceMeters,

@@ -107,7 +107,6 @@ public class NetworkService extends IntentService {
             connection.setDoOutput(true);
         }
 
-
         return connection;
     }
 

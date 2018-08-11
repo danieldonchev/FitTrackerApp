@@ -56,8 +56,8 @@ public class CustomGoal extends Goal {
     }
 
     @Override
-    public com.traker.shared.Goal toServerGoal() {
-        com.traker.shared.Goal goal = new com.traker.shared.Goal(id,
+    public com.tracker.shared.Goal toServerGoal() {
+        com.tracker.shared.Goal goal = new com.tracker.shared.Goal(id,
                 CUSTOM,
                 distance,
                 duration,
@@ -70,7 +70,7 @@ public class CustomGoal extends Goal {
     }
 
     @Override
-    public void fromServerGoal(com.traker.shared.Goal goal) {
+    public void fromServerGoal(com.tracker.shared.Goal goal) {
         this.id = goal.getId();
         this.distance = goal.getDistance();
         this.duration = goal.getDuration();

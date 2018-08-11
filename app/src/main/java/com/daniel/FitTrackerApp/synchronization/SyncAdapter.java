@@ -29,12 +29,12 @@ import com.daniel.FitTrackerApp.provider.ProviderContract;
 import com.daniel.FitTrackerApp.utils.AppUtils;
 import com.daniel.FitTrackerApp.utils.HttpConstants;
 import com.daniel.FitTrackerApp.utils.HttpsClient;
-import com.traker.shared.Goal;
-import com.traker.shared.SerializeHelper;
-import com.traker.shared.Split;
-import com.traker.shared.SportActivity;
-import com.traker.shared.SportActivityMap;
-import com.traker.shared.Weight;
+import com.tracker.shared.Goal;
+import com.tracker.shared.SerializeHelper;
+import com.tracker.shared.Split;
+import com.tracker.shared.SportActivity;
+import com.tracker.shared.SportActivityMap;
+import com.tracker.shared.Weight;
 
 import org.json.JSONArray;
 import org.json.JSONException;

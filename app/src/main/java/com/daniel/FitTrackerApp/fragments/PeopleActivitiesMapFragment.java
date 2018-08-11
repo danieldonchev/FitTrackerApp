@@ -40,8 +40,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.VisibleRegion;
-import com.traker.shared.SerializeHelper;
-import com.traker.shared.SportActivityWithOwner;
+import com.tracker.shared.SerializeHelper;
+import com.tracker.shared.SportActivityWithOwner;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,7 +64,7 @@ public class PeopleActivitiesMapFragment extends Fragment implements OnMapReadyC
     private boolean isBoundSet;
     private ArrayList<Marker> markers, selectedActivityMarkers;
     private Polyline currentPolyline;
-    private com.traker.shared.SportActivityMap map;
+    private com.tracker.shared.SportActivityMap map;
     private ArrayList<SportActivityWithOwner> sportActivityWithOwners;
     private boolean isMetric;
 
@@ -313,9 +313,9 @@ public class PeopleActivitiesMapFragment extends Fragment implements OnMapReadyC
                 }
             }
         } else if(resultCode == 2){
-            map = new com.traker.shared.SportActivityMap().deserialize(resultData.getByteArray("map"));
+            map = new com.tracker.shared.SportActivityMap().deserialize(resultData.getByteArray("map"));
             if (map != null) {
-                for (com.traker.shared.LatLng latLng : map.getMarkers())
+                for (com.tracker.shared.LatLng latLng : map.getMarkers())
                 {
                     int size = map.getMarkers().size();
 
@@ -339,7 +339,7 @@ public class PeopleActivitiesMapFragment extends Fragment implements OnMapReadyC
             if (map.getPolyline() != null)
             {
                 PolylineOptions polyline = new PolylineOptions();
-                for (com.traker.shared.LatLng latLng : map.getPolyline()) {
+                for (com.tracker.shared.LatLng latLng : map.getPolyline()) {
                     polyline.add(new LatLng(latLng.latitude, latLng.longitude));
                 }
                 currentPolyline = mMap.addPolyline(polyline);

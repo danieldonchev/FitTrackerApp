@@ -3,7 +3,7 @@ package com.daniel.FitTrackerApp;
 import android.app.Application;
 import android.content.Context;
 
-//import android.support.multidex.MultiDex;
+//import cacert.support.multidex.MultiDex;
 
 import com.daniel.FitTrackerApp.helpers.PreferencesHelper;
 import com.daniel.FitTrackerApp.utils.HttpsClient;

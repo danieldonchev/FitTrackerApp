@@ -24,11 +24,6 @@ public class RegisterDialog extends Dialog
     private Button registerButton;
     private Context context;
 
-    private WebView webView;
-    private boolean isSubmitted = false;
-
-    private String responseToken;
-
     public RegisterDialog(final Context context, OnDismissListener onDismissListener)
     {
         super(context, android.R.style.Theme_Black_NoTitleBar);
@@ -42,31 +37,7 @@ public class RegisterDialog extends Dialog
 
         registerButton = (Button) findViewById(R.id.registerDialogButton);
         registerButton.setOnClickListener(onClickListener);
-
-
-        webView = (WebView) findViewById(R.id.webView);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setDomStorageEnabled(true);
-        webView.getSettings().setBuiltInZoomControls(false);
-        webView.setVisibility(View.GONE);
-
-        webView.addJavascriptInterface(this, "BridgeWebViewClass");
-
-        webView.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url)
-            {
-                if(!isSubmitted){
-                    webView.evaluateJavascript("executeCaptcha();", null);
-                    webView.evaluateJavascript("window.BridgeWebViewClass.processHTML('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');", null);
-                    isSubmitted = true;
-                }
-
-            }
-        });
-
-        webView.loadUrl(API.captcha);
-    }
+        }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -85,8 +56,10 @@ public class RegisterDialog extends Dialog
                             Register register = new Register(context);
                             register.authenticate(new RegisterUser(nameText.getText().toString(),
                                     emailText.getText().toString(),
-                                    passwordText.getText().toString(),
-                                    responseToken));
+                                    passwordText.getText().toString()
+
+
+                                    ));
                         } else {
                             Toast.makeText(context, "Passwords don't match!", Toast.LENGTH_LONG).show();
                         }
@@ -99,26 +72,6 @@ public class RegisterDialog extends Dialog
             } else {
                 Toast.makeText(context, "Email address is invalid.", Toast.LENGTH_SHORT).show();
             }
-
-
-
-
         }
     };
-
-    @JavascriptInterface
-    public void reCaptchaCallbackInAndroid(String g_response){
-        Log.d("reCaptcha", "token" + g_response);
-        responseToken = g_response;
-    }
-
-
-    @SuppressWarnings("unused")
-    @JavascriptInterface
-    public void processHTML(String html)
-    {
-        int b = 5;
-        // process the html as needed by the app
-    }
-
 }

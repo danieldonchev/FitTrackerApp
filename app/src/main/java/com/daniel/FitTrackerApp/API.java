@@ -4,8 +4,8 @@ public final class API {
     //base url address
 //    private static final String baseURLHttps = "https://95.42.100.225:8181/";
 //    private static final String baseURLHttp = "http://95.42.100.225:8080/";
-    private static final String baseURLHttps = "https://192.168.0.103:8181/";
-    private static final String baseURLHttp = "http://192.168.0.103:8080/";
+    private static final String baseURLHttps = "https://192.168.100.44:8181/";
+    private static final String baseURLHttp = "http://192.168.100.44:8080/";
 //
 //    private static final String baseURLHttps = "https://192.168.43.96:8181/";
 //    private static final String baseURLHttp = "http://192.168.43.96:8080/";

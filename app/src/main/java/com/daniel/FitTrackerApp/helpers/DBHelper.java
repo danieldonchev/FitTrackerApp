@@ -23,7 +23,7 @@ import com.daniel.FitTrackerApp.sportactivity.SportActivity;
 import com.daniel.FitTrackerApp.sportactivity.SportActivitySummariesByTime;
 import com.daniel.FitTrackerApp.sportactivity.SportActivitySummary;
 import com.daniel.FitTrackerApp.synchronization.SyncHelper;
-import com.traker.shared.Weight;
+import com.tracker.shared.Weight;
 
 
 import org.json.JSONException;
@@ -194,7 +194,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //        return sportActivity.getId();
 //    }
 
-    public UUID addActivity(com.traker.shared.SportActivity sportActivity, String id, Context context, int synced, int type){
+    public UUID addActivity(com.tracker.shared.SportActivity sportActivity, String id, Context context, int synced, int type){
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(ProviderContract.AccountEntry._ID, sportActivity.getId().toString());
@@ -302,13 +302,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return activities;
     }
 
-    public int addSplits(String sportActivityID, String userID, List<com.traker.shared.Split> splits, ContentResolver contentResolver){
+    public int addSplits(String sportActivityID, String userID, List<com.tracker.shared.Split> splits, ContentResolver contentResolver){
 
         try {
             if(splits != null){
                 ContentValues[] arrayValues = new ContentValues[splits.size()];
                 int i = 0;
-                for (com.traker.shared.Split split : splits) {
+                for (com.tracker.shared.Split split : splits) {
                     arrayValues[i] = new ContentValues();
                     arrayValues[i].put(ProviderContract.SportActivityEntry.SPLIT_ID, split.getId());
                     arrayValues[i].put(ProviderContract.SportActivityEntry.SPLIT_ACTIVITY_ID, sportActivityID);
@@ -665,7 +665,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return 0;
     }
 
-    public int updateSportActivity(Context context, String userID, com.traker.shared.SportActivity sportActivity, int synced) {
+    public int updateSportActivity(Context context, String userID, com.tracker.shared.SportActivity sportActivity, int synced) {
 
         long timestamp = System.currentTimeMillis();
 
@@ -789,7 +789,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return settings;
     }
 
-    public int addGoal(Context context, String userID, com.traker.shared.Goal goal, int synced){
+    public int addGoal(Context context, String userID, com.tracker.shared.Goal goal, int synced){
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(ProviderContract.GoalEntry._ID, goal.getId().toString());
